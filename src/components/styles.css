@@ -1,0 +1,127 @@
+.copyr {
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  width: 100%;
+}
+body {
+  width: 100%;
+  line-height: 1.4;
+}
+.form-control {
+  height: 40px !important;
+  border-radius: 4px;
+}
+.loginPage {
+  width: 350px;
+  height: 350px;
+  background-color: #efefef;
+  margin: auto;
+  margin-top: 120px;
+  border-radius: 2px;
+  box-shadow: 5px 6px 5px 6px #bdbbbb;
+  text-align: left;
+}
+.btn-login {
+  width: 100%;
+  background-color: #1773db !important;
+  height: 45px;
+  /* width: 100px; */
+  border-radius: 4px;
+  color: #fff !important;
+}
+button:hover {
+  background-color: #0480b9 !important;
+  box-shadow: 1px;
+  color: #fff;
+}
+
+.errwrap {
+  text-align: center;
+}
+
+.error {
+  font-size: 12px;
+  margin: auto;
+  color: #ff3361;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+.signupPage {
+  width: 350px;
+  background-color: #efefef;
+  padding: 10px;
+  margin: auto;
+  margin-top: 5vh;
+  border-radius: 2px;
+  box-shadow: 5px 10px 5px 10px #888888;
+  text-align: left;
+}
+.homeHead {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgba(248, 249, 250, 0.95);
+  font-size: 1.5em;
+}
+* {
+    font-family: arial;
+  }
+  
+  /** float container */
+  .float-container {
+    border: solid 1px #ccc;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+    padding: 0 8px;
+    position: relative;
+    width: 300px;
+  }
+    input {
+      border: none;
+      font-size: 16px;
+      outline: 0;
+      padding: 16px 0 10px;    
+      width: 100%;
+    }
+  
+    label {
+      font-size: 16px;
+      position: absolute;
+      transform-origin: top left;
+      transform: translate(0, 16px) scale(1); 
+      transition: all .1s ease-in-out; 
+       /* speed */
+    }
+    
+    /** active label */
+    .active label {
+        /* move the x coordinate and reduce size */
+        transform: translate(0, 4px) scale(.75);
+      }
+    .prod-box{
+      background-color: #efefef
+    }
+    .font-14{
+      font-size: 14px;
+    }
+  
+    .font-22{
+      font-size: 22px;
+    }
+  
+    .font-19{
+      font-size: 19px;
+    }
+  
+  

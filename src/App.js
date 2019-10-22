@@ -1,26 +1,39 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Join from "./components/join";
+import Login from "./components/login";
+import Signup from "./components/signup";
+import Calculator from "./components/calculator";
+// import API from "./components/api";
+// import ImageUpload from "./components/upload";
+import { Switch, Route } from "react-router";
+import Home from './components/home';
+import FloatingLab from './components/floatingLab';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ConfigRouters />
     </div>
   );
 }
+
+const ConfigRouters = () => (
+  <Switch>
+    <Route exact path="/join" component={Join} />
+    <Route exact path="/login" component={Login} />
+    <Route exact path="/signup" component={Signup} />
+    <Route exact path="/calculator" component={Calculator} />
+    <Route exact path="/home" component={Home} />
+    <Route exact path="/floatinglab" component={FloatingLab} />
+    {/* <Route exact path="/" component={Phonebook} />
+    <Route path="/api" component={API} />
+    <Route path="/upload" component={ImageUpload} />
+    <Route component={"error"} /> */}
+    <Route component={"error"} />
+  </Switch>
+);
 
 export default App;
