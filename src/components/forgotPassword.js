@@ -3,7 +3,7 @@ import "./styles.css";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faArrowRight, faMinus } from "@fortawesome/free-solid-svg-icons";
 
-class Login extends React.Component {
+class ForgotPassword extends React.Component {
     
     render() {
     return (
@@ -42,7 +42,7 @@ class Login extends React.Component {
  </a>
 </p>
 <p>
-        Forgot Password? Click <a href="./forgotpassword">forgot_password
+        Forgot Password click <a href="./forgotpassword" target="_blank">forgot_password
      </a>
     </p>
         </div>
@@ -51,5 +51,5 @@ class Login extends React.Component {
     );
   }
 }
-export default Login;
+export default ForgotPassword;
 

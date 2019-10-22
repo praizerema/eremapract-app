@@ -46,13 +46,13 @@ class Home extends React.Component {
                     <a className="nav-link" href="login.html">Link</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="signup.html">Signup</a>
+                    <a className="nav-link" href="./signup">Signup</a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="#">About us</a>
                   </li>
                   <li className="nav-item">
-                      <a className="nav-link" href="#">Contact</a>
+                      <a className="nav-link" href="./contactUs">Contact</a>
                     </li>
                   <li className="nav-item">
                       <a className="nav-link" href="#">Product</a>
@@ -70,49 +70,49 @@ class Home extends React.Component {
              
               <div className="col-4 text-left">
                <div className="px-4 font-19 font-weight-bold mb-2">Cat.A(Kids)</div>
-               <div className="px-4 font-14 prod-box">
-                <div className=""> <a href="#">Caps</a></div>
+               <div className="px-4 py-3 font-14 prod-box">
+                <div className=""> <a href="#" className="acolor">Caps</a></div>
                 <hr/>
-              <div className=""> <a href="#">Skirts</a></div>
+              <div className=""> <a href="#" className="acolor">Skirts</a></div>
               <hr/>
-              <div className=""> <a href="#">Pants</a></div>
+              <div className=""> <a href="#" className="acolor">Pants</a></div>
               <hr/>
-              <div className=""> <a href="#">Tops</a></div>
+              <div className=""> <a href="#" className="acolor">Tops</a></div>
               <hr/>
-              <div className=""> <a href="#">Shoes</a></div>
+              <div className=""> <a href="#" className="acolor">Shoes</a></div>
               <hr/>
-              <div className=""> <a href="#">More...</a></div>
+              <div className=""> <a href="#" className="acolor">More...</a></div>
                 </div></div>
 
               <div className="col-4 text-left">
               <div className="px-4 font-19 font-weight-bold mb-2">Cat.B(Women)</div>
-              <div className="font-14 px-4 prod-box">
-              <div className=""><a href="#">Gowns & dresses</a></div>
+              <div className="font-14 py-3 px-4 prod-box">
+              <div className=""><a href="#" className="acolor">Gowns & dresses</a></div>
               <hr/>
-              <div className=""><a href="#">Skirts</a></div>
+              <div className=""><a href="#" className="acolor">Skirts</a></div>
               <hr/>
-              <div className=""><a href="#">Tops & Pants</a></div>
+              <div className=""><a href="#" className="acolor">Tops & Pants</a></div>
               <hr/>
-              <div className=""> <a href="#">Office Wears</a></div>
+              <div className=""> <a href="#" className="acolor">Office Wears</a></div>
               <hr/>
-              <div className=""> <a href="#">Shoes</a></div>
+              <div className=""> <a href="#" className="acolor">Shoes</a></div>
               <hr/>
-              <div className=""> <a href="#">More...</a></div>
+              <div className=""> <a href="#" className="acolor">More...</a></div>
               </div></div>
               <div className="col-4 text-left">
               <div className="px-4 font-19 font-weight-bold mb-2">Cat.C(Men)</div>
-              <div className="font-14 px-4 prod-box">
-              <div className=""> <a href="#">Tops & Pants</a></div>
+              <div className="font-14 py-3 px-4 text-muted prod-box">
+              <div className=""> <a href="#" className="acolor">Tops & Pants</a></div>
               <hr/>
-              <div className=""> <a href="#">Office wears</a></div>
+              <div className=""> <a href="#" className="acolor">Office wears</a></div>
               <hr/>
-              <div className=""> <a href="#">Casual Wears</a></div>
+              <div className=""> <a href="#" className="acolor">Casual Wears</a></div>
               <hr/>
-              <div className=""> <a href="#">Hats & Caps</a></div>
+              <div className=""> <a href="#" className="acolor">Hats & Caps</a></div>
               <hr/>
-              <div className=""> <a href="#">Shoes</a></div>
+              <div className=""> <a href="#" className="acolor">Shoes</a></div>
               <hr/>
-              <div className=""> <a href="#">More...</a></div>
+              <div className=""> <a href="#" className="acolor">More...</a></div>
 </div>
               </div>
             </div>

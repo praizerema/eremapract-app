@@ -120,7 +120,7 @@ emailHandler (e) {
                     <span id="error" class="error hide">Invalid Detail supply</span>
                 </div>
                 <p className="col-12">
-                    Already on erema? <a href="login.html" target="_blank">Signin
+                    Already on erema? <a href="./login">Signin
 
                     </a>
 

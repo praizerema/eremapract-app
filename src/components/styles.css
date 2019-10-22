@@ -14,7 +14,7 @@ body {
 }
 .loginPage {
   width: 350px;
-  height: 350px;
+  max-height: 100vh;
   background-color: #efefef;
   margin: auto;
   margin-top: 120px;
@@ -79,38 +79,28 @@ button:hover {
   }
   
   /** float container */
-  .float-container {
+  /* .float-container {
     border: solid 1px #ccc;
     box-sizing: border-box;
     margin-bottom: 8px;
     padding: 0 8px;
     position: relative;
     width: 300px;
-  }
-    input {
+  } */
+    /* input {
       border: none;
       font-size: 16px;
       outline: 0;
       padding: 16px 0 10px;    
       width: 100%;
-    }
+    } */
   
-    label {
-      font-size: 16px;
-      position: absolute;
-      transform-origin: top left;
-      transform: translate(0, 16px) scale(1); 
-      transition: all .1s ease-in-out; 
-       /* speed */
-    }
-    
-    /** active label */
-    .active label {
-        /* move the x coordinate and reduce size */
-        transform: translate(0, 4px) scale(.75);
-      }
     .prod-box{
-      background-color: #efefef
+      background-color: #e5f0f0;
+    }
+   a{
+      text-decoration: none !important;
+      /* color: #000 !important; */
     }
     .font-14{
       font-size: 14px;
@@ -123,5 +113,72 @@ button:hover {
     .font-19{
       font-size: 19px;
     }
+    .acolor{
+      color: rgb(56, 55, 55) !important;
+    }
+    .prod-box a:hover {
+      background-color: rgb(234, 240, 237);
+      color: #555;
+      font-size: 1.3em;
+    }
   
-  
+    .calculatorwrapper {
+      width: 100%;
+      height: 85vh;
+      background-color: #fff;
+      text-align: center;
+      top: 0;
+      position: relative;
+  }
+  .calculatorHead {
+    color:#3f5757;
+    text-align: left;
+    font-style: italic;
+    padding-left: 10px;
+
+}
+
+.calculatorPage {
+    width: 250px;
+    height: 400px;
+    background-color: #efefef;
+    margin: auto;
+    margin-top: 14vh;
+    border-radius: 2px;
+    box-shadow: 2px 5px 2px 5px #888888;
+    /* text-align: auto; */
+}
+
+.calculatorScreen {
+    width: 154px;
+    height: 40px;
+    border: 4px solid gray;
+    padding: 20px;
+    margin: auto;
+    border-radius: 4px;
+    background-color: rgb(252, 250, 250);
+}
+
+.calcbutton {
+  width: 50px;
+  height: 30px;
+  padding: 6px 5px;
+  font-size: 1em;
+  margin: 5px;
+  border: 1px thin gray;
+  background-color: #3f5757;
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+  box-shadow: 2px 2px 2px #bdbbbb 
+}
+.calcbutton:hover {
+  background-color: #314b4b !important;
+  box-shadow: 1px;
+  font-size: 1.2em;
+
+}
+
+.equalto {
+  width: 115px ;
+}
