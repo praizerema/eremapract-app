@@ -43,7 +43,7 @@ class Home extends React.Component {
               <div className="navbar-collapse collapse show" id="collapsibleNavbar">
                 <ul className="navbar-nav ml-auto ">
                   <li className="nav-item">
-                    <a className="nav-link" href="login.html">Link</a>
+                    <a className="nav-link" href="./login">Sign </a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="./signup">Signup</a>

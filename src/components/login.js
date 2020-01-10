@@ -16,7 +16,7 @@ class Login extends React.Component {
                 <input class="form-control" name='username' id='username' type="text" placeholder="username"
                   onfocus="errhandling()"/>
                 </div>
-                
+                 
                 <div class="errwrap">
                     <span id="errorUser" class="error hide">Enter Username</span>
                 </div>
