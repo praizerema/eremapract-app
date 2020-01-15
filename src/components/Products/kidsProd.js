@@ -5,14 +5,14 @@ import { connect } from 'react-redux';
 // import {faPlusCircle} from "@fortawesome/free-solid-svg-icons";
 class KidsProd extends Component{
 handleDetail= (id)=>{
-    
+
 }
     handleClick = (id)=>{
         // this.props.addToView(id);
     }
 
     render(){
-        let itemList = this.props.items.map(item=>{ 
+        let itemList = this.props.kids.map(item=>{ 
             return(
             <div className="card" key={item.id}>
                 <div className= "card-image col-sm-3">
@@ -43,7 +43,7 @@ handleDetail= (id)=>{
 }
     const mapStateToProps = (state)=>{
         return {
-          items: state.items[0]
+          kids: state.kids
         }
       }
     export default connect(mapStateToProps)(KidsProd);

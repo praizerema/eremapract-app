@@ -25,187 +25,401 @@ import productBTwelve from "../../../assets/image/FashionWomen/images (8).jpeg";
 import productBThirteen from "../../../assets/image/FashionWomen/images (9).jpeg";
 import productBFourteen from "../../../assets/image/FashionWomen/images (10).jpeg";
 import productBFifteeen from "../../../assets/image/FashionWomen/images (11).jpeg";
-import productBSixteen  from "../../../assets/image/FashionWomen/images (12).jpeg";
+import productBSixteen from "../../../assets/image/FashionWomen/images (12).jpeg";
 import productBSeventeen from "../../../assets/image/FashionWomen/images (13).jpeg";
 import productBEighteen from "../../../assets/image/FashionWomen/images (14).jpeg";
 import productBNineteen from "../../../assets/image/FashionWomen/images (15).jpeg";
 import productBTwenty from "../../../assets/image/FashionWomen/images (16).jpeg";
-import { ADD_TO_CART,REMOVE_ITEM,VIEW_ITEM,SUB_QUANTITY,ADD_QUANTITY} from "../actions/action-types/cart-actions";
+import {
+  ADD_TO_CART,
+  REMOVE_ITEM,
+  VIEW_ITEM,
+  SUB_QUANTITY,
+  ADD_QUANTITY,
+  SHOW_VIEW
+} from "../actions/action-types/cart-actions";
 
-
-
-
-
-
-
-const initState= {
-    items: [
-        [{id: "1", title:"kids(top & bottom)", desc: "Childeren within the the age bracket of four and five years old should wear this", price: 2500, img: ProductAOne},
-        {id: "2", title:"Babies(top & bottom)", desc: "These are very good design and fabric for babies", price: 5500, img: ProductATwo},
-        {id: "3", title:"Baby wear", desc: "Ideal for babies. Good fabric", price: 2900, img: ProductAThree},
-        {id: "4", title:"top & bottom", desc: "Good product, great pricee", price: 3300, img: ProductAFour},
-        {id: "5", title:"Pleated gown", desc: "These are for your female childeren between four and five", price: 2800, img: ProductAFive},
-        {id: "6", title:"kids(Shirt & Shorts)", desc: "Unisex for kids between four and five", price: 2600, img: ProductASix},
-        {id: "7", title:"Fitted Teens gown", desc: "Elastic for girls between thirteen and fifteen", price: 2000, img: ProductASeven},
-        {id: "8", title:"Peplum gowns", desc: "Nice and free not suitable for kids above Ten", price: 3000, img: ProductAEight},
-        {id: "9", title:"Baloon gowns", desc: "Nice for the season Age bracket ten and Twelve", price: 3500, img: ProductANine},
-        {id: "10", title:"babies(complete)", desc: "Childeren within the the age bracket of three and four years old should wear this", price: 1500, img: ProductATen},
-        {id: "11", title:"kids(top & pant)", desc: "Childeren within the the age bracket of two and three years old should wear this", price: 4500, img: ProductAEleven},
-        {id: "12", title:"Jacket", desc: "Available in all sizes and colors", price: 7500, img: ProductATwelve}
+const initState = {
+  //womn
+  kids:
+    [
+      {
+        id: "1",
+        title: "kids(top & bottom)",
+        desc:
+          "Childeren within the the age bracket of four and five years old should wear this",
+        price: 2500,
+        img: ProductAOne
+      },
+      {
+        id: "2",
+        title: "Babies(top & bottom)",
+        desc: "These are very good design and fabric for babies",
+        price: 5500,
+        img: ProductATwo
+      },
+      {
+        id: "3",
+        title: "Baby wear",
+        desc: "Ideal for babies. Good fabric",
+        price: 2900,
+        img: ProductAThree
+      },
+      {
+        id: "4",
+        title: "top & bottom",
+        desc: "Good product, great pricee",
+        price: 3300,
+        img: ProductAFour
+      },
+      {
+        id: "5",
+        title: "Pleated gown",
+        desc: "These are for your female childeren between four and five",
+        price: 2800,
+        img: ProductAFive
+      },
+      {
+        id: "6",
+        title: "kids(Shirt & Shorts)",
+        desc: "Unisex for kids between four and five",
+        price: 2600,
+        img: ProductASix
+      },
+      {
+        id: "7",
+        title: "Fitted Teens gown",
+        desc: "Elastic for girls between thirteen and fifteen",
+        price: 2000,
+        img: ProductASeven
+      },
+      {
+        id: "8",
+        title: "Peplum gowns",
+        desc: "Nice and free not suitable for kids above Ten",
+        price: 3000,
+        img: ProductAEight
+      },
+      {
+        id: "9",
+        title: "Baloon gowns",
+        desc: "Nice for the season Age bracket ten and Twelve",
+        price: 3500,
+        img: ProductANine
+      },
+      {
+        id: "10",
+        title: "babies(complete)",
+        desc:
+          "Childeren within the the age bracket of three and four years old should wear this",
+        price: 1500,
+        img: ProductATen
+      },
+      {
+        id: "11",
+        title: "kids(top & pant)",
+        desc:
+          "Childeren within the the age bracket of two and three years old should wear this",
+        price: 4500,
+        img: ProductAEleven
+      },
+      {
+        id: "12",
+        title: "Jacket",
+        desc: "Available in all sizes and colors",
+        price: 7500,
+        img: ProductATwelve
+      }
     ],
 
-        [
-        {id: "1", title:"kids(top & bottom)", desc: "Childeren within the the age bracket of four and five years old should wear this", price: 2500, img: productBOne},
-        {id: "2", title:"Babies(top & bottom)", desc: "These are very good design and fabric for babies", price: 5500, img: productBTwo},
-        {id: "3", title:"Baby wear", desc: "Ideal for babies. Good fabric", price: 2900, img: productBThree},
-        {id: "4", title:"top & bottom", desc: "Good product, great pricee", price: 3300, img: productBFour},
-        {id: "5", title:"Pleated gown", desc: "These are for your female childeren between four and five", price: 2800, img: productBFive},
-        {id: "6", title:"kids(Shirt & Shorts)", desc: "Unisex for kids between four and five", price: 2600, img: productBSix},
-        {id: "7", title:"Fitted Teens gown", desc: "Elastic for girls between thirteen and fifteen", price: 2000, img: productBSeven},
-        {id: "8", title:"Peplum gowns", desc: "Nice and free not suitable for kids above Ten", price: 3000, img: productBEight},
-        {id: "9", title:"Baloon gowns", desc: "Nice for the season Age bracket ten and Twelve", price: 3500, img: ProductBNine},
-        {id: "10", title:"babies(complete)", desc: "Childeren within the the age bracket of three and four years old should wear this", price: 1500, img: ProductBTen},
-        {id: "11", title:"kids(top & pant)", desc: "Childeren within the the age bracket of two and three years old should wear this", price: 4500, img: ProductBEleven},
-        {id: "12", title:"Jacket", desc: "Available in all sizes and colors", price: 7500, img: productBTwelve},
-        {id: "13", title:"Jacket", desc: "Available in all sizes and colors", price: 7500, img: productBThirteen},
-        {id: "14", title:"Jacket", desc: "Available in all sizes and colors", price: 7500, img: productBFourteen},
-        {id: "15", title:"Jacket", desc: "Available in all sizes and colors", price: 7500, img: productBFifteeen},
-        {id: "16", title:"Jacket", desc: "Available in all sizes and colors", price: 7500, img: productBSixteen},
-        {id: "17", title:"Jacket", desc: "Available in all sizes and colors", price: 7500, img: productBSeventeen},
-        {id: "18", title:"Jacket", desc: "Available in all sizes and colors", price: 7500, img: productBEighteen},
-        {id: "19", title:"Jacket", desc: "Available in all sizes and colors", price: 7500, img: productBNineteen},
-        {id: "20", title:"Jacket", desc: "Available in all sizes and colors", price: 7500, img: productBTwenty},
-
-    ]
-        
+   women:[
+      {
+        id: "1",
+        title: "kids(top & bottom)",
+        desc:
+          "Childeren within the the age bracket of four and five years old should wear this",
+        price: 2500,
+        img: productBOne
+      },
+      {
+        id: "2",
+        title: "Babies(top & bottom)",
+        desc: "These are very good design and fabric for babies",
+        price: 5500,
+        img: productBTwo
+      },
+      {
+        id: "3",
+        title: "Baby wear",
+        desc: "Ideal for babies. Good fabric",
+        price: 2900,
+        img: productBThree
+      },
+      {
+        id: "4",
+        title: "top & bottom",
+        desc: "Good product, great pricee",
+        price: 3300,
+        img: productBFour
+      },
+      {
+        id: "5",
+        title: "Pleated gown",
+        desc: "These are for your female childeren between four and five",
+        price: 2800,
+        img: productBFive
+      },
+      {
+        id: "6",
+        title: "kids(Shirt & Shorts)",
+        desc: "Unisex for kids between four and five",
+        price: 2600,
+        img: productBSix
+      },
+      {
+        id: "7",
+        title: "Fitted Teens gown",
+        desc: "Elastic for girls between thirteen and fifteen",
+        price: 2000,
+        img: productBSeven
+      },
+      {
+        id: "8",
+        title: "Peplum gowns",
+        desc: "Nice and free not suitable for kids above Ten",
+        price: 3000,
+        img: productBEight
+      },
+      {
+        id: "9",
+        title: "Baloon gowns",
+        desc: "Nice for the season Age bracket ten and Twelve",
+        price: 3500,
+        img: ProductBNine
+      },
+      {
+        id: "10",
+        title: "babies(complete)",
+        desc:
+          "Childeren within the the age bracket of three and four years old should wear this",
+        price: 1500,
+        img: ProductBTen
+      },
+      {
+        id: "11",
+        title: "kids(top & pant)",
+        desc:
+          "Childeren within the the age bracket of two and three years old should wear this",
+        price: 4500,
+        img: ProductBEleven
+      },
+      {
+        id: "12",
+        title: "Jacket",
+        desc: "Available in all sizes and colors",
+        price: 7500,
+        img: productBTwelve
+      },
+      {
+        id: "13",
+        title: "Jacket",
+        desc: "Available in all sizes and colors",
+        price: 7500,
+        img: productBThirteen
+      },
+      {
+        id: "14",
+        title: "Jacket",
+        desc: "Available in all sizes and colors",
+        price: 7500,
+        img: productBFourteen
+      },
+      {
+        id: "15",
+        title: "Jacket",
+        desc: "Available in all sizes and colors",
+        price: 7500,
+        img: productBFifteeen
+      },
+      {
+        id: "16",
+        title: "Jacket",
+        desc: "Available in all sizes and colors",
+        price: 7500,
+        img: productBSixteen
+      },
+      {
+        id: "17",
+        title: "Jacket",
+        desc: "Available in all sizes and colors",
+        price: 7500,
+        img: productBSeventeen
+      },
+      {
+        id: "18",
+        title: "Jacket",
+        desc: "Available in all sizes and colors",
+        price: 7500,
+        img: productBEighteen
+      },
+      {
+        id: "19",
+        title: "Jacket",
+        desc: "Available in all sizes and colors",
+        price: 7500,
+        img: productBNineteen
+      },
+      {
+        id: "20",
+        title: "Jacket",
+        desc: "Available in all sizes and colors",
+        price: 7500,
+        img: productBTwenty
+      }
     ],
-  
-    addedItems:[],
-    
-    total: 0
-}
 
+  addedItems: [],
+  total: 0,
+  showView: false,
+  viewValue: {}
+};
 
-const cartReducer= (state = initState,action)=>{
-   
-    //INSIDE HOME COMPONENT
-    if(action.type === ADD_TO_CART){
-          let addedItem = state.items.find(item=> item.id === action.id)
-          //check if the action id exists in the addedItems
-         let existed_item= state.addedItems.find(item=> action.id === item.id)
-         if(existed_item)
-         {
-            addedItem.quantity += 1 
-             return{
-                ...state,
-                 total: state.total + addedItem.price 
-                  }
-        }
-         else{
-            addedItem.quantity = 1;
-            //calculating the total
-            let newTotal = state.total + addedItem.price 
-            
-            return{
-                ...state,
-                addedItems: [...state.addedItems, addedItem],
-                total : newTotal
-            }
-            
-        }
-    }
-  
-    if(action.type === REMOVE_ITEM){
-        let itemToRemove= state.addedItems.find(item=> action.id === item.id)
-        let new_items = state.addedItems.filter(item=> action.id !== item.id)
-        
-        //calculating the total
-        let newTotal = state.total - (itemToRemove.price * itemToRemove.quantity )
-        console.log(itemToRemove)
-        return{
-            ...state,
-            addedItems: new_items,
-            total: newTotal
-        }
-    }
-    //INSIDE CART COMPONENT
-    if(action.type=== ADD_QUANTITY){
-        let addedItem = state.items.find(item=> item.id === action.id)
-          addedItem.quantity += 1 
-          let newTotal = state.total + addedItem.price
-          return{
-              ...state,
-              total: newTotal
-          }
-    }
-    if(action.type=== SUB_QUANTITY){  
-        let addedItem = state.items.find(item=> item.id === action.id) 
-        //if the qt == 0 then it should be removed
-        if(addedItem.quantity === 1){
-            let new_items = state.addedItems.filter(item=>item.id !== action.id)
-            let newTotal = state.total - addedItem.price
-            return{
-                ...state,
-                addedItems: new_items,
-                total: newTotal
-            }
-        }
-        else {
-            addedItem.quantity -= 1
-            let newTotal = state.total - addedItem.price
-            return{
-                ...state,
-                total: newTotal
-            }
-        }
-        
-    }
-    if(action.type === REMOVE_ITEM){
-        let itemToRemove= state.addedItems.find(item=> action.id === item.id)
-        let new_items = state.addedItems.filter(item=> action.id !== item.id)
-        
-        //calculating the total
-        let newTotal = state.total - (itemToRemove.price * itemToRemove.quantity )
-        console.log(itemToRemove)
-        return{
-            ...state,
-            addedItems: new_items,
-            total: newTotal
-        }
-    }
-    //INSIDE CART COMPONENT
-    if(action.type=== ADD_QUANTITY){
-        let addedItem = state.items.find(item=> item.id === action.id)
-          addedItem.quantity += 1 
-          let newTotal = state.total + addedItem.price
-          return{
-              ...state,
-              total: newTotal
-          }
-    }
-    if(action.type=== SUB_QUANTITY){  
-        let addedItem = state.items.find(item=> item.id === action.id) 
-        //if the qt == 0 then it should be removed
-        if(addedItem.quantity === 1){
-            let new_items = state.addedItems.filter(item=>item.id !== action.id)
-            let newTotal = state.total - addedItem.price
-            return{
-                ...state,
-                addedItems: new_items,
-                total: newTotal
-            }
-        }
-        else {
-            addedItem.quantity -= 1
-            let newTotal = state.total - addedItem.price
-            return{
-                ...state,
-                total: newTotal
-            }
-        }
-        
-    }
-    return state
-}
+const cartReducer = (state = initState, action) => {
+  //INSIDE HOME COMPONENT
+  if (action.type === VIEW_ITEM) {
+    let addedItem = state.women.find(item => item.id === action.id);
+    return {
+      ...state,
+      viewValue: addedItem,
+      showView: true
+    };
+  }
+  if (action.type === SHOW_VIEW) {
+    return {
+      ...state,
+      viewValue: {},
+      showView: false
+    };
+  }
+
+  // //INSIDE HOME COMPONENT
+  // if(action.type === ADD_TO_CART){
+  //       let addedItem = state.items.find(item=> item.id === action.id)
+  //       //check if the action id exists in the addedItems
+  //      let existed_item= state.addedItems.find(item=> action.id === item.id)
+  //      if(existed_item)
+  //      {
+  //         addedItem.quantity += 1
+  //          return{
+  //             ...state,
+  //              total: state.total + addedItem.price
+  //               }
+  //     }
+  //      else{
+  //         addedItem.quantity = 1;
+  //         //calculating the total
+  //         let newTotal = state.total + addedItem.price
+
+  //         return{
+  //             ...state,
+  //             addedItems: [...state.addedItems, addedItem],
+  //             total : newTotal
+  //         }
+
+  //     }
+  // }
+
+  // if(action.type === REMOVE_ITEM){
+  //     let itemToRemove= state.addedItems.find(item=> action.id === item.id)
+  //     let new_items = state.addedItems.filter(item=> action.id !== item.id)
+
+  //     //calculating the total
+  //     let newTotal = state.total - (itemToRemove.price * itemToRemove.quantity )
+  //     console.log(itemToRemove)
+  //     return{
+  //         ...state,
+  //         addedItems: new_items,
+  //         total: newTotal
+  //     }
+  // }
+  // //INSIDE CART COMPONENT
+  // if(action.type=== ADD_QUANTITY){
+  //     let addedItem = state.items.find(item=> item.id === action.id)
+  //       addedItem.quantity += 1
+  //       let newTotal = state.total + addedItem.price
+  //       return{
+  //           ...state,
+  //           total: newTotal
+  //       }
+  // }
+  // if(action.type=== SUB_QUANTITY){
+  //     let addedItem = state.items.find(item=> item.id === action.id)
+  //     //if the qt == 0 then it should be removed
+  //     if(addedItem.quantity === 1){
+  //         let new_items = state.addedItems.filter(item=>item.id !== action.id)
+  //         let newTotal = state.total - addedItem.price
+  //         return{
+  //             ...state,
+  //             addedItems: new_items,
+  //             total: newTotal
+  //         }
+  //     }
+  //     else {
+  //         addedItem.quantity -= 1
+  //         let newTotal = state.total - addedItem.price
+  //         return{
+  //             ...state,
+  //             total: newTotal
+  //         }
+  //     }
+
+  // }
+  // if(action.type === REMOVE_ITEM){
+  //     let itemToRemove= state.addedItems.find(item=> action.id === item.id)
+  //     let new_items = state.addedItems.filter(item=> action.id !== item.id)
+
+  //     //calculating the total
+  //     let newTotal = state.total - (itemToRemove.price * itemToRemove.quantity )
+  //     console.log(itemToRemove)
+  //     return{
+  //         ...state,
+  //         addedItems: new_items,
+  //         total: newTotal
+  //     }
+  // }
+  // //INSIDE CART COMPONENT
+  // if(action.type=== ADD_QUANTITY){
+  //     let addedItem = state.items.find(item=> item.id === action.id)
+  //       addedItem.quantity += 1
+  //       let newTotal = state.total + addedItem.price
+  //       return{
+  //           ...state,
+  //           total: newTotal
+  //       }
+  // }
+  // if(action.type=== SUB_QUANTITY){
+  //     let addedItem = state.items.find(item=> item.id === action.id)
+  //     //if the qt == 0 then it should be removed
+  //     if(addedItem.quantity === 1){
+  //         let new_items = state.addedItems.filter(item=>item.id !== action.id)
+  //         let newTotal = state.total - addedItem.price
+  //         return{
+  //             ...state,
+  //             addedItems: new_items,
+  //             total: newTotal
+  //         }
+  //     }
+  //     else {
+  //         addedItem.quantity -= 1
+  //         let newTotal = state.total - addedItem.price
+  //         return{
+  //             ...state,
+  //             total: newTotal
+  //         }
+  //     }
+
+  // }
+  return state;
+};
 
 export default cartReducer;
