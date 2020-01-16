@@ -30,6 +30,30 @@ import productBSeventeen from "../../../assets/image/FashionWomen/images (13).jp
 import productBEighteen from "../../../assets/image/FashionWomen/images (14).jpeg";
 import productBNineteen from "../../../assets/image/FashionWomen/images (15).jpeg";
 import productBTwenty from "../../../assets/image/FashionWomen/images (16).jpeg";
+import MenOne from "../../../assets/image/fashionMen/men1.jpg";
+import MenTwo from "../../../assets/image/fashionMen/men2.jpeg";
+import MenThree from "../../../assets/image/fashionMen/men3.jpg";
+import MenFour from "../../../assets/image/fashionMen/men4.jpeg";
+import MenFive from "../../../assets/image/fashionMen/men5.jpeg";
+import MenSix from "../../../assets/image/fashionMen/men6.jpeg";
+import MenSeven from "../../../assets/image/fashionMen/men7.jpeg";
+import MenEight from "../../../assets/image/fashionMen/men8.jpeg";
+import MenNine from "../../../assets/image/fashionMen/sandalmen.jpeg";
+import MenTen from "../../../assets/image/fashionMen/sandalmen2.jpeg";
+import MenEleven from "../../../assets/image/fashionMen/sandalunisex.jpeg";
+import MenTwelve from "../../../assets/image/fashionMen/sandalunisex1.jpeg";
+import MenThirteen from "../../../assets/image/fashionMen/sandalunisex2.jpeg";
+import MenFourteen from "../../../assets/image/fashionMen/sneakersmen1.jpeg";
+import MenFifteen from "../../../assets/image/fashionMen/sneakersmen2.jpeg";
+import MenSixteen from "../../../assets/image/fashionMen/sneakersmen3.jpeg";
+import MenSeventeen from "../../../assets/image/fashionMen/sneakersunisex.jpeg";
+import MenEighteen from "../../../assets/image/fashionMen/topunisex.jpeg";
+import MenNineteen from "../../../assets/image/fashionMen/topunisex1.jpeg";
+import MenTwenty from "../../../assets/image/fashionMen/topunisex2.jpeg";
+// import MenOne from "../../../assets/image/fashionMen/men1.jpg";
+// import MenOne from "../../../assets/image/fashionMen/men1.jpg";
+// import MenOne from "../../../assets/image/fashionMen/men1.jpg";
+
 import {
   ADD_TO_CART,
   REMOVE_ITEM,
@@ -41,243 +65,383 @@ import {
 
 const initState = {
   //womn
-  kids:
-    [
-      {
-        id: "1",
-        title: "kids(top & bottom)",
-        desc:
-          "Childeren within the the age bracket of four and five years old should wear this",
-        price: 2500,
-        img: ProductAOne
-      },
-      {
-        id: "2",
-        title: "Babies(top & bottom)",
-        desc: "These are very good design and fabric for babies",
-        price: 5500,
-        img: ProductATwo
-      },
-      {
-        id: "3",
-        title: "Baby wear",
-        desc: "Ideal for babies. Good fabric",
-        price: 2900,
-        img: ProductAThree
-      },
-      {
-        id: "4",
-        title: "top & bottom",
-        desc: "Good product, great pricee",
-        price: 3300,
-        img: ProductAFour
-      },
-      {
-        id: "5",
-        title: "Pleated gown",
-        desc: "These are for your female childeren between four and five",
-        price: 2800,
-        img: ProductAFive
-      },
-      {
-        id: "6",
-        title: "kids(Shirt & Shorts)",
-        desc: "Unisex for kids between four and five",
-        price: 2600,
-        img: ProductASix
-      },
-      {
-        id: "7",
-        title: "Fitted Teens gown",
-        desc: "Elastic for girls between thirteen and fifteen",
-        price: 2000,
-        img: ProductASeven
-      },
-      {
-        id: "8",
-        title: "Peplum gowns",
-        desc: "Nice and free not suitable for kids above Ten",
-        price: 3000,
-        img: ProductAEight
-      },
-      {
-        id: "9",
-        title: "Baloon gowns",
-        desc: "Nice for the season Age bracket ten and Twelve",
-        price: 3500,
-        img: ProductANine
-      },
-      {
-        id: "10",
-        title: "babies(complete)",
-        desc:
-          "Childeren within the the age bracket of three and four years old should wear this",
-        price: 1500,
-        img: ProductATen
-      },
-      {
-        id: "11",
-        title: "kids(top & pant)",
-        desc:
-          "Childeren within the the age bracket of two and three years old should wear this",
-        price: 4500,
-        img: ProductAEleven
-      },
-      {
-        id: "12",
-        title: "Jacket",
-        desc: "Available in all sizes and colors",
-        price: 7500,
-        img: ProductATwelve
-      }
-    ],
+  kids: [
+    {
+      id: "1",
+      title: "kids(top & bottom)",
+      desc:
+        "Childeren within the the age bracket of four and five years old should wear this",
+      price: 2500,
+      img: ProductAOne
+    },
+    {
+      id: "2",
+      title: "Babies(top & bottom)",
+      desc: "These are very good design and fabric for babies",
+      price: 5500,
+      img: ProductATwo
+    },
+    {
+      id: "3",
+      title: "Baby wear",
+      desc: "Ideal for babies. Good fabric",
+      price: 2900,
+      img: ProductAThree
+    },
+    {
+      id: "4",
+      title: "top & bottom",
+      desc: "Good product, great pricee",
+      price: 3300,
+      img: ProductAFour
+    },
+    {
+      id: "5",
+      title: "Pleated gown",
+      desc: "These are for your female childeren between four and five",
+      price: 2800,
+      img: ProductAFive
+    },
+    {
+      id: "6",
+      title: "kids(Shirt & Shorts)",
+      desc: "Unisex for kids between four and five",
+      price: 2600,
+      img: ProductASix
+    },
+    {
+      id: "7",
+      title: "Fitted Teens gown",
+      desc: "Elastic for girls between thirteen and fifteen",
+      price: 2000,
+      img: ProductASeven
+    },
+    {
+      id: "8",
+      title: "Peplum gowns",
+      desc: "Nice and free not suitable for kids above Ten",
+      price: 3000,
+      img: ProductAEight
+    },
+    {
+      id: "9",
+      title: "Baloon gowns",
+      desc: "Nice for the season Age bracket ten and Twelve",
+      price: 3500,
+      img: ProductANine
+    },
+    {
+      id: "10",
+      title: "babies(complete)",
+      desc:
+        "Childeren within the the age bracket of three and four years old should wear this",
+      price: 1500,
+      img: ProductATen
+    },
+    {
+      id: "11",
+      title: "kids(top & pant)",
+      desc:
+        "Childeren within the the age bracket of two and three years old should wear this",
+      price: 4500,
+      img: ProductAEleven
+    },
+    {
+      id: "12",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: ProductATwelve
+    }
+  ],
 
-   women:[
-      {
-        id: "1",
-        title: "kids(top & bottom)",
-        desc:
-          "Childeren within the the age bracket of four and five years old should wear this",
-        price: 2500,
-        img: productBOne
-      },
-      {
-        id: "2",
-        title: "Babies(top & bottom)",
-        desc: "These are very good design and fabric for babies",
-        price: 5500,
-        img: productBTwo
-      },
-      {
-        id: "3",
-        title: "Baby wear",
-        desc: "Ideal for babies. Good fabric",
-        price: 2900,
-        img: productBThree
-      },
-      {
-        id: "4",
-        title: "top & bottom",
-        desc: "Good product, great pricee",
-        price: 3300,
-        img: productBFour
-      },
-      {
-        id: "5",
-        title: "Pleated gown",
-        desc: "These are for your female childeren between four and five",
-        price: 2800,
-        img: productBFive
-      },
-      {
-        id: "6",
-        title: "kids(Shirt & Shorts)",
-        desc: "Unisex for kids between four and five",
-        price: 2600,
-        img: productBSix
-      },
-      {
-        id: "7",
-        title: "Fitted Teens gown",
-        desc: "Elastic for girls between thirteen and fifteen",
-        price: 2000,
-        img: productBSeven
-      },
-      {
-        id: "8",
-        title: "Peplum gowns",
-        desc: "Nice and free not suitable for kids above Ten",
-        price: 3000,
-        img: productBEight
-      },
-      {
-        id: "9",
-        title: "Baloon gowns",
-        desc: "Nice for the season Age bracket ten and Twelve",
-        price: 3500,
-        img: ProductBNine
-      },
-      {
-        id: "10",
-        title: "babies(complete)",
-        desc:
-          "Childeren within the the age bracket of three and four years old should wear this",
-        price: 1500,
-        img: ProductBTen
-      },
-      {
-        id: "11",
-        title: "kids(top & pant)",
-        desc:
-          "Childeren within the the age bracket of two and three years old should wear this",
-        price: 4500,
-        img: ProductBEleven
-      },
-      {
-        id: "12",
-        title: "Jacket",
-        desc: "Available in all sizes and colors",
-        price: 7500,
-        img: productBTwelve
-      },
-      {
-        id: "13",
-        title: "Jacket",
-        desc: "Available in all sizes and colors",
-        price: 7500,
-        img: productBThirteen
-      },
-      {
-        id: "14",
-        title: "Jacket",
-        desc: "Available in all sizes and colors",
-        price: 7500,
-        img: productBFourteen
-      },
-      {
-        id: "15",
-        title: "Jacket",
-        desc: "Available in all sizes and colors",
-        price: 7500,
-        img: productBFifteeen
-      },
-      {
-        id: "16",
-        title: "Jacket",
-        desc: "Available in all sizes and colors",
-        price: 7500,
-        img: productBSixteen
-      },
-      {
-        id: "17",
-        title: "Jacket",
-        desc: "Available in all sizes and colors",
-        price: 7500,
-        img: productBSeventeen
-      },
-      {
-        id: "18",
-        title: "Jacket",
-        desc: "Available in all sizes and colors",
-        price: 7500,
-        img: productBEighteen
-      },
-      {
-        id: "19",
-        title: "Jacket",
-        desc: "Available in all sizes and colors",
-        price: 7500,
-        img: productBNineteen
-      },
-      {
-        id: "20",
-        title: "Jacket",
-        desc: "Available in all sizes and colors",
-        price: 7500,
-        img: productBTwenty
-      }
-    ],
-
+  women: [
+    {
+      id: "1",
+      title: "kids(top & bottom)",
+      desc:
+        "Childeren within the the age bracket of four and five years old should wear this",
+      price: 2500,
+      img: productBOne
+    },
+    {
+      id: "2",
+      title: "Babies(top & bottom)",
+      desc: "These are very good design and fabric for babies",
+      price: 5500,
+      img: productBTwo
+    },
+    {
+      id: "3",
+      title: "Baby wear",
+      desc: "Ideal for babies. Good fabric",
+      price: 2900,
+      img: productBThree
+    },
+    {
+      id: "4",
+      title: "top & bottom",
+      desc: "Good product, great pricee",
+      price: 3300,
+      img: productBFour
+    },
+    {
+      id: "5",
+      title: "Pleated gown",
+      desc: "These are for your female childeren between four and five",
+      price: 2800,
+      img: productBFive
+    },
+    {
+      id: "6",
+      title: "kids(Shirt & Shorts)",
+      desc: "Unisex for kids between four and five",
+      price: 2600,
+      img: productBSix
+    },
+    {
+      id: "7",
+      title: "Fitted Teens gown",
+      desc: "Elastic for girls between thirteen and fifteen",
+      price: 2000,
+      img: productBSeven
+    },
+    {
+      id: "8",
+      title: "Peplum gowns",
+      desc: "Nice and free not suitable for kids above Ten",
+      price: 3000,
+      img: productBEight
+    },
+    {
+      id: "9",
+      title: "Baloon gowns",
+      desc: "Nice for the season Age bracket ten and Twelve",
+      price: 3500,
+      img: ProductBNine
+    },
+    {
+      id: "10",
+      title: "babies(complete)",
+      desc:
+        "Childeren within the the age bracket of three and four years old should wear this",
+      price: 1500,
+      img: ProductBTen
+    },
+    {
+      id: "11",
+      title: "kids(top & pant)",
+      desc:
+        "Childeren within the the age bracket of two and three years old should wear this",
+      price: 4500,
+      img: ProductBEleven
+    },
+    {
+      id: "12",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: productBTwelve
+    },
+    {
+      id: "13",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: productBThirteen
+    },
+    {
+      id: "14",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: productBFourteen
+    },
+    {
+      id: "15",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: productBFifteeen
+    },
+    {
+      id: "16",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: productBSixteen
+    },
+    {
+      id: "17",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: productBSeventeen
+    },
+    {
+      id: "18",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: productBEighteen
+    },
+    {
+      id: "19",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: productBNineteen
+    },
+    {
+      id: "20",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: productBTwenty
+    }
+  ],
+  men: [
+    {
+      id: "1",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenOne
+    },
+    {
+      id: "2",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenTwo
+    },
+    {
+      id: "3",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenThree
+    },
+    {
+      id: "4",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenFour
+    },
+    {
+      id: "5",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenFive
+    },
+    {
+      id: "6",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenSix
+    },
+    {
+      id: "7",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenSeven
+    },
+    {
+      id: "8",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenEight
+    },
+    {
+      id: "9",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenNine
+    },
+    {
+      id: "10",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenTen
+    },
+    {
+      id: "11",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenEleven
+    },
+    {
+      id: "12",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenTwelve
+    },
+    {
+      id: "13",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenThirteen
+    },
+    {
+      id: "14",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenFourteen
+    },
+    {
+      id: "15",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenFifteen
+    },
+    {
+      id: "16",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenSixteen
+    },
+    {
+      id: "17",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenSeventeen
+    },
+    {
+      id: "18",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenEighteen
+    },
+    {
+      id: "19",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenNineteen
+    },
+    {
+      id: "20",
+      title: "Jacket",
+      desc: "Available in all sizes and colors",
+      price: 7500,
+      img: MenTwenty
+    }
+  ],
   addedItems: [],
   total: 0,
   showView: false,
@@ -287,7 +451,11 @@ const initState = {
 const cartReducer = (state = initState, action) => {
   //INSIDE HOME COMPONENT
   if (action.type === VIEW_ITEM) {
-    let addedItem = state.women.find(item => item.id === action.id);
+    let addedItem =
+      state.women.find(item => item.id === action.id) &&
+      state.kids.find(item => item.id === action.id) &&
+      state.men.find(item => item.id === action.id);
+
     return {
       ...state,
       viewValue: addedItem,

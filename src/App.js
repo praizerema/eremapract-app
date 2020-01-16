@@ -14,6 +14,7 @@ import womenProd from './components/Products/womenProd';
 import kidsProd from './components/Products/kidsProd';
 import Detail from './components/Products/detail';
 import cart from './components/Products/cart';
+import Men from './components/Products/men';
 
 // import viewItem from './components/Products/viewItem';
 
@@ -34,6 +35,7 @@ class App extends Component {
     <Route exact path="/contactUs" component={ContactUs} />
     <Route exact path="/floatinglab" component={FloatingLab} />
     <Route exact path="/women" component={womenProd} />
+    <Route exact path="/men" component={Men} />
     <Route exact path="/kids" component={kidsProd} />
     <Route exact path="/details" component={Detail} />
     <Route exact path="/cart" component={cart} />

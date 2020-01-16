@@ -6,7 +6,7 @@ import { viewItem } from "./actions/cartActions";
 // import { addToCart } from './actions/cartActions';
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {faPlusCircle} from "@fortawesome/free-solid-svg-icons";
-class KidsProd extends Component{
+class Men extends Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -21,9 +21,9 @@ class KidsProd extends Component{
     
 
     render(){
-        let itemList = this.props.kids.map(item=>{ 
+        let itemList = this.props.men.map(item=>{ 
             return(
-            <div className="card" key={item.id}>
+            <div className="card col-4" key={item.id}>
                 <div className= "card-image col-sm-3">
                     <img src={item.img} className="itemImg img-fluid" alt={item.title}/>
                     <span className="card-title">{item.title}</span>
@@ -81,7 +81,7 @@ class KidsProd extends Component{
 }
     const mapStateToProps = (state)=>{
         return {
-          kids: state.kids
+          men: state.men
         }
       }
       const mapDispatchToProps = dispatch => {
@@ -94,4 +94,4 @@ class KidsProd extends Component{
           // }
         };
       };
-    export default connect(mapStateToProps, mapDispatchToProps)(KidsProd);
+    export default connect(mapStateToProps, mapDispatchToProps)(Men);

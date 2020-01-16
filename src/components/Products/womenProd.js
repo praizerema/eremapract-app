@@ -21,7 +21,7 @@ class WomenProd extends Component {
   render() {
     let itemList = this.props.women.map(item => {
       return (
-        <div className="card col-3" key={item.id}>
+        <div className="card col-4" key={item.id}>
           <div className="">
             <div className="card-image">
               <img src={item.img} className="itemImg" alt={item.title} />
@@ -49,7 +49,7 @@ class WomenProd extends Component {
       );
     });
     return (
-      <div className="container">
+      <div className="container-fluid ">
         <h3 className="center">Our items</h3>
         <div className="box row">{itemList}</div>
         {this.state.showView && (
@@ -90,7 +90,7 @@ class WomenProd extends Component {
 const mapStateToProps = state => {
   return {
     women: state.women,
-    viewValue: state.viewValue
+    // viewValue: state.viewValue
     // showView: state.showView
   };
 };
