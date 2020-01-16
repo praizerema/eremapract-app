@@ -16,10 +16,10 @@ export const addToCart = id => {
   };
 };
 //view item action
-export const viewItem = id => {
+export const viewItem = data => {
   return {
     type: VIEW_ITEM,
-    id
+    data
   };
 };
 //view item action

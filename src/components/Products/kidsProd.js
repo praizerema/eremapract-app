@@ -23,18 +23,20 @@ class KidsProd extends Component{
     render(){
         let itemList = this.props.kids.map(item=>{ 
             return(
-            <div className="card" key={item.id}>
-                <div className= "card-image col-sm-3">
+                <div className="col-sm-3 pb-5"> 
+            <div className="card" key={item.id} onClick={()=>{this.handleView(item.id)}}>
+                <div className= "card-image ">
                     <img src={item.img} className="itemImg img-fluid" alt={item.title}/>
                     <span className="card-title">{item.title}</span>
                    
                 </div>
                 <div className="card-content">
-<p>{item.desc}</p>
-<span> <b>Price: {item.price}&#8358;</b> </span>
-<button to= "/" className="btn-floating px-5 pl-5" onClick={()=>{this.handleView(item.id)}}>View
-{/* <FontAwesomeIcon icon={faPlusCircle} style={{color:"red"}}/> */}
-</button>
+{/* <p>{item.desc}</p> */}
+<span> <b>{item.price}&#8358;</b> </span>
+{/* <button to= "/" className="btn-floating px-5 pl-5" onClick={()=>{this.handleView(item.id)}}>View
+<FontAwesomeIcon icon={faPlusCircle} style={{color:"red"}}/>
+</button> */}
+</div>
                 </div>
             </div>
          )
@@ -52,7 +54,7 @@ class KidsProd extends Component{
               position: "fixed",
               top: "10px",
               width: "500px",
-              height: "700px",
+              height: "500px",
               zIndex: "200"
             }}
           >
@@ -86,8 +88,9 @@ class KidsProd extends Component{
       }
       const mapDispatchToProps = dispatch => {
         return {
-          viewItem: id => {
-            dispatch(viewItem(id));
+            viewItem: id => {
+                const data = { id, type: "kids" };
+                dispatch(viewItem(data));
           }
           // showViews: bool => {
           //   dispatch(showViews(bool));

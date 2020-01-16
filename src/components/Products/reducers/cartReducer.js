@@ -443,23 +443,29 @@ const initState = {
     }
   ],
   addedItems: [],
-  total: 0,
-  showView: false,
-  viewValue: {}
+  total: 0
+  //   showView: false,
+  //   viewValue: {}
 };
 
 const cartReducer = (state = initState, action) => {
   //INSIDE HOME COMPONENT
+  //view
   if (action.type === VIEW_ITEM) {
+    const data = action.data || {};
     let addedItem =
-      state.women.find(item => item.id === action.id) &&
-      state.kids.find(item => item.id === action.id) &&
-      state.men.find(item => item.id === action.id);
+      data.type === "women"
+        ? state.women.find(item => item.id === data.id)
+        : data.type === "kids"
+        ? state.kids.find(item => item.id === data.id)
+        : data.type === "men"
+        ? state.men.find(item => item.id === data.id)
+        : {};
 
     return {
       ...state,
-      viewValue: addedItem,
-      showView: true
+      viewValue: addedItem
+      //   showView: true
     };
   }
   if (action.type === SHOW_VIEW) {

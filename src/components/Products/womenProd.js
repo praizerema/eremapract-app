@@ -21,35 +21,35 @@ class WomenProd extends Component {
   render() {
     let itemList = this.props.women.map(item => {
       return (
-        <div className="card col-4" key={item.id}>
-          <div className="">
+        <div className=" col-sm-3 pb-5" >
+          <div className="card" key={item.id} onClick={() => {
+                this.handleView(item.id);
+              }}>
             <div className="card-image">
               <img src={item.img} className="itemImg" alt={item.title} />
               <span className="card-title">{item.title}</span>
             </div>
-          </div>
+          
           <div className="card-content">
-            <p>{item.desc}</p>
+            {/* <p>{item.desc}</p> */}
             <span>
-              {" "}
-              <b>Price: {item.price}&#8358;</b>{" "}
+              <b>{item.price}&#8358;</b>
             </span>
-            <span
+            {/* <span
               to="./cart"
               className="btn-floating px-5 pl-5"
-              onClick={() => {
-                this.handleView(item.id);
-              }}
+              
             >
-              {/* <FontAwesomeIcon icon={faPlusCircle} style={{color:"red"}}/> */}{" "}
+              <FontAwesomeIcon icon={faPlusCircle} style={{color:"red"}}/>
               view
-            </span>
+            </span> */}
+          </div>
           </div>
         </div>
       );
     });
     return (
-      <div className="container-fluid ">
+      <div className="container ">
         <h3 className="center">Our items</h3>
         <div className="box row">{itemList}</div>
         {this.state.showView && (
@@ -95,10 +95,12 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => { 
+
   return {
     viewItem: id => {
-      dispatch(viewItem(id));
+        const data = { id, type: "women" };
+        dispatch(viewItem(data));
     }
     // showViews: bool => {
     //   dispatch(showViews(bool));

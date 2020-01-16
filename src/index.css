@@ -30,13 +30,18 @@ a{
   font-weight: 700;
 }
 .itemImg{
-  width: 198px;
-  height: 150px
+  width: 100%;
+  height: 175px !important;
+}
+.card-image{
+  width: 98%px;
+  /* height: 195px */
 }
 .card{
-  /* width: 200px; */
-  float: left;
-  height: 300px;
+  width: 100%;
+  /* float: left; */
+  height: 250px;
+  margin: auto !important;
   /* margin: 5px; */
 }
 .card .card-image .card-title{
