@@ -68,8 +68,10 @@ handleSubtractQuantity = (id)=>{
 }
 
 const mapStateToProps = (state)=>{
+    console.log(state.addedItems)
+
     return{
-        items: state.addedItems
+        items: state.addedItems,
         //addedItems: state.addedItems
     }
 }

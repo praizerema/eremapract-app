@@ -54,12 +54,12 @@ class WomenProd extends Component {
         <div className="box row">{itemList}</div>
         {this.state.showView && (
           <div
-            className="card"
+            className="card container"
             style={{
               position: "fixed",
               top: "10px",
               width: "500px",
-              height: "700px",
+              height: "450px",
               zIndex: "200"
             }}
           >

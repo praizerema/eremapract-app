@@ -310,7 +310,7 @@ const initState = {
     },
     {
       id: "2",
-      title: "Jacket",
+      title: "Suit",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: MenTwo
@@ -331,21 +331,21 @@ const initState = {
     },
     {
       id: "5",
-      title: "Jacket",
+      title: "Traditional Attire",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: MenFive
     },
     {
       id: "6",
-      title: "Jacket",
+      title: "Office Shirt",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: MenSix
     },
     {
       id: "7",
-      title: "Jacket",
+      title: "Office Shirt",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: MenSeven
@@ -359,91 +359,92 @@ const initState = {
     },
     {
       id: "9",
-      title: "Jacket",
+      title: "Sandals",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: MenNine
     },
     {
       id: "10",
-      title: "Jacket",
+      title: "Sandals",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: MenTen
     },
     {
       id: "11",
-      title: "Jacket",
+      title: "Sandals",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: MenEleven
     },
     {
       id: "12",
-      title: "Jacket",
+      title: "Sandals",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: MenTwelve
     },
     {
       id: "13",
-      title: "Jacket",
+      title: "Sandals",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: MenThirteen
     },
     {
       id: "14",
-      title: "Jacket",
+      title: "Sneakers",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: MenFourteen
     },
     {
       id: "15",
-      title: "Jacket",
+      title: "Sneakers",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: MenFifteen
     },
     {
       id: "16",
-      title: "Jacket",
+      title: "Sneakers",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: MenSixteen
     },
     {
       id: "17",
-      title: "Jacket",
+      title: "Sneakers",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: MenSeventeen
     },
     {
       id: "18",
-      title: "Jacket",
+      title: "Shirts",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: MenEighteen
     },
     {
       id: "19",
-      title: "Jacket",
+      title: "Shirts",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: MenNineteen
     },
     {
       id: "20",
-      title: "Jacket",
+      title: "Shirts",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: MenTwenty
     }
   ],
   addedItems: [],
-  total: 0
+  total: 0,
+  
   //   showView: false,
   //   viewValue: {}
 };
@@ -451,6 +452,7 @@ const initState = {
 const cartReducer = (state = initState, action) => {
   //INSIDE HOME COMPONENT
   //view
+
   if (action.type === VIEW_ITEM) {
     const data = action.data || {};
     let addedItem =
@@ -467,15 +469,97 @@ const cartReducer = (state = initState, action) => {
       viewValue: addedItem
       //   showView: true
     };
+    
   }
+   
+
   if (action.type === SHOW_VIEW) {
     return {
       ...state,
       viewValue: {},
       showView: false
     };
+
+  }
+  console.log(state.addedItems)
+
+  if(action.type === ADD_TO_CART){
+    let addedItem = (state.viewValue)
+    //check if the action id exists in the addedItems
+   let existed_item= state.addedItems.find(item=> action.id === item.id)
+   console.log(state.addedItems)
+
+   if(existed_item)
+   {
+      addedItem.quantity += 1 
+       return{
+          ...state,
+           total: state.total + addedItem.price 
+            }
+  }
+  
+   else{
+      addedItem.quantity = 1;
+      //calculating the total
+      let newTotal = state.total + addedItem.price 
+    //   console.log(newTotal)
+    //   console.log(addedItem)
+    console.log(state.addedItems)
+      return{
+          ...state,
+          addedItems: [...state.addedItems, addedItem],
+          total : newTotal,
+      }
+  
+      
   }
 
+}
+if(action.type === REMOVE_ITEM){
+    let itemToRemove= state.addedItems.find(item=> action.id === item.id)
+    let new_items = state.addedItems.filter(item=> action.id !== item.id)
+
+    //calculating the total
+    let newTotal = state.total - (itemToRemove.price * itemToRemove.quantity )
+    console.log(itemToRemove)
+    return{
+        ...state,
+        addedItems: new_items,
+        total: newTotal
+    }
+}
+//INSIDE CART COMPONENT
+if(action.type=== ADD_QUANTITY){
+    let addedItem = (state.viewValue)
+      addedItem.quantity += 1
+      let newTotal = state.total + addedItem.price
+      return{
+          ...state,
+          total: newTotal
+      }
+}
+if(action.type=== SUB_QUANTITY){
+    let addedItem = (state.viewValue)
+    //if the qt == 0 then it should be removed
+    if(addedItem.quantity === 1){
+        let new_items = state.addedItems.filter(item=>item.id !== action.id)
+        let newTotal = state.total - addedItem.price
+        return{
+            ...state,
+            addedItems: new_items,
+            total: newTotal
+        }
+    }
+    else {
+        addedItem.quantity -= 1
+        let newTotal = state.total - addedItem.price
+        return{
+            ...state,
+            total: newTotal
+        }
+    }
+
+}
   // //INSIDE HOME COMPONENT
   // if(action.type === ADD_TO_CART){
   //       let addedItem = state.items.find(item=> item.id === action.id)

@@ -9,8 +9,12 @@ class NavBar extends Component{
     <div className="container">
     <Link to="/" className="brandLogo">Shopping</Link>
         <ul className="float-right">
-            <li className="px-5"> <Link to ="/" >Shop</Link> </li>
-            <li className="px-5"> <Link to ="/cart" >My cart </Link></li>
+            <li className="px-5"> <Link to ="/women" >women</Link> </li>
+            <li className="px-5"> <Link to ="/men" >Men </Link></li>
+            <li className="px-5"> <Link to ="/kids" >kids </Link></li>
+            <li className="px-5"> <Link to ="/cart" >Cart </Link></li>
+
+
             {/* <li className="px-5"> <Link to ="/cart" > <FontAwesomeIcon icon={faShoppingCart} /> </Link></li> */}
         </ul>
     </div>
