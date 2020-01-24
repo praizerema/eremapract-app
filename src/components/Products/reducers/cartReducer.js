@@ -531,89 +531,71 @@ const cartReducer = (state = initState, action) => {
     };
   }
 
-// if(action.type === REMOVE_ITEM){
-//     let itemToRemove= state.addedItems.find(item=> action.item === item.id)
-//     let new_items = state.addedItems.filter(item=> action.item !== item.id)
-// console.log(action.item)
-//     //calculating the total
-//     let newTotal = state.total - (itemToRemove.price * itemToRemove.quantity )
-//     console.log(itemToRemove)
-//     return{
-//         ...state,
-//         addedItems: new_items,
-//         total: newTotal
-//     }
-// }
+
 
   //INSIDE CART COMPONENT
-//   if (action.type === ADD_QUANTITY) {
-//     let data = action.item;
-//     let addedItem = state.addedItems.find(
-//       item => item.id === data.id && action.cart === item.cart
-//     );
-//     addedItem.quantity += 1;
-//     let newTotal = state.total + addedItem.price;
-//     return {
-//       ...state,
-//       total: newTotal
-//     };
-//   }
+  if (action.type === ADD_QUANTITY) {
+    let data = action.item;
+    let addedItem = state.addedItems.find(
+      item => data.id === item.id && data.cart === item.cart
+    );
+    addedItem.quantity += 1;
+    let newTotal = state.total + addedItem.price;
+    return {
+      ...state,
+      total: newTotal
+    };
+  }
 
-   //INSIDE CART COMPONENT
-   if(action.type=== ADD_QUANTITY){
-    let addedItem = state.items.find(item=> item.id === action.id)
-      addedItem.quantity += 1 
-      let newTotal = state.total + addedItem.price
-      return{
-          ...state,
-          total: newTotal
-      }
-}
-//   if (action.type === SUB_QUANTITY) {
-//     let data = action.item;
-//     let addedItem = state.addedItems.find(
-//       item => item.id === data.id && action.cart === item.cart
-//     );
-//     //if the qt == 0 then it should be removed
-//     if (addedItem.quantity === 1) {
-//       let new_items = state.addedItems.filter(item => item.id !== data.id);
-//       let newTotal = state.total - addedItem.price;
-//       return {
-//         ...state,
-//         addedItems: new_items,
-//         total: newTotal
-//       };
-//     } else {
-//       addedItem.quantity -= 1;
-//       let newTotal = state.total - addedItem.price;
-//       return {
-//         ...state,
-//         total: newTotal
-//       };
-//     }
-//   }
-if(action.type=== SUB_QUANTITY){  
-    let addedItem = state.items.find(item=> item.id === action.id) 
+
+
+  if (action.type === SUB_QUANTITY) {
+    let data = action.item;
+    let addedItem = state.addedItems.find(
+      item => data.id === item.id && data.cart === item.cart
+    );
     //if the qt == 0 then it should be removed
-    if(addedItem.quantity === 1){
-        let new_items = state.addedItems.filter(item=>item.id !== action.id)
-        let newTotal = state.total - addedItem.price
-        return{
-            ...state,
-            addedItems: new_items,
-            total: newTotal
-        }
+    if (addedItem.quantity === 1) {
+      let new_items = state.addedItems.filter(item => data.id === item.id && data.cart !== item.cart);
+      let newTotal = state.total - addedItem.price;
+      return {
+        ...state,
+        addedItems: new_items,
+        total: newTotal
+      };
+    } else {
+      addedItem.quantity -= 1;
+      let newTotal = state.total - addedItem.price;
+      return {
+        ...state,
+        total: newTotal
+      };
     }
-    else {
-        addedItem.quantity -= 1
-        let newTotal = state.total - addedItem.price
-        return{
-            ...state,
-            total: newTotal
-        }
-    }
+  }
+
+
+// if(action.type=== SUB_QUANTITY){  
+//     let addedItem = state.items.find(item=> item.id === action.id) 
+//     //if the qt == 0 then it should be removed
+//     if(addedItem.quantity === 1){
+//         let new_items = state.addedItems.filter(item=>item.id !== action.id)
+//         let newTotal = state.total - addedItem.price
+//         return{
+//             ...state,
+//             addedItems: new_items,
+//             total: newTotal
+//         }
+//     }
+//     else {
+//         addedItem.quantity -= 1
+//         let newTotal = state.total - addedItem.price
+//         return{
+//             ...state,
+//             total: newTotal
+//         }
+//     }
     
-}
+// }
 
   // //INSIDE HOME COMPONENT
   // if(action.type === ADD_TO_CART){
