@@ -60,7 +60,7 @@ class Men extends Component {
     });
 
     return (
-      <div className="container">
+      <div className="container-fluid">
       <NavBar />
 
         <h3 className="center">Our items</h3>

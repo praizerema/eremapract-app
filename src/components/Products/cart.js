@@ -4,19 +4,21 @@ import { Link } from 'react-router-dom';
 import { removeItem,addQuantity,subtractQuantity} from './actions/cartActions';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faAngleUp, faAngleDown} from "@fortawesome/free-solid-svg-icons";
-import AddMore from "./addMore"
+import AddMore from "./addMore";
+import NavBar from "./navBar"
+
 class Cart extends Component{
  //to remove the item completely
- handleRemove = (id)=>{
-    this.props.removeItem(id);
+ handleRemove = (item)=>{
+    this.props.removeItem(item);
 }
 //to add the quantity
-handleAddQuantity = (id)=>{
-    this.props.addQuantity(id);
+handleAddQuantity = (item)=>{
+    this.props.addQuantity(item);
 }
 //to substruct from the quantity
-handleSubtractQuantity = (id)=>{
-    this.props.subtractQuantity(id);
+handleSubtractQuantity = (item)=>{
+    this.props.subtractQuantity(item);
 }
     render(){
               
@@ -38,10 +40,10 @@ handleSubtractQuantity = (id)=>{
                                             <b>Quantity: {item.quantity}</b> 
                                         </p>
                                         <div className="add-remove col-6">
-                                            <Link to="/cart"><FontAwesomeIcon icon={faAngleUp} onClick={()=>{this.handleAddQuantity(item.id)}} style= {{color: "black"}}/></Link>
-                                            <Link to="/cart"><FontAwesomeIcon icon={faAngleDown} onClick={()=>{this.handleSubtractQuantity(item.id)}} style= {{color: "black"}}/></Link>
+                                            <Link to="/cart"><FontAwesomeIcon icon={faAngleUp} onClick={()=>{this.handleAddQuantity(item)}} style= {{color: "black"}}/></Link>
+                                            <Link to="/cart"><FontAwesomeIcon icon={faAngleDown} onClick={()=>{this.handleSubtractQuantity(item)}} style= {{color: "black"}}/></Link>
                                         </div>
-                                        <button className="btn-danger remove" onClick={()=>{this.handleRemove(item.id)}}>Remove</button>
+                                        <button className="btn-danger remove" onClick={()=>{this.handleRemove(item)}}>Remove</button>
                                     </div>
                                     
                                </li>                        
@@ -53,8 +55,10 @@ handleSubtractQuantity = (id)=>{
                 <p>Nothing.</p>
              )
        return(
-            <div className="container">
+            <div className="container-fluid">
+            <NavBar />
                 <div className="cart">
+
                     <h5>You have ordered:</h5>
                     <ul className="collection">
                         {addedItems}
@@ -77,9 +81,9 @@ const mapStateToProps = (state)=>{
 }
 const mapDispatchToProps = (dispatch)=>{
     return{
-        removeItem: (id)=>{dispatch(removeItem(id))},
-        addQuantity: (id)=>{dispatch(addQuantity(id))},
-        subtractQuantity: (id)=>{dispatch(subtractQuantity(id))}
+        removeItem: (item)=>{dispatch(removeItem(item))},
+        addQuantity: (item)=>{dispatch(addQuantity(item))},
+        subtractQuantity: (item)=>{dispatch(subtractQuantity(item))}
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Cart)

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ViewItem from "../Products/viewItem";
 import { viewItem } from "./actions/cartActions";
+import NavBar from "./navBar";
 // import { showViews } from "./actions/cartActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
@@ -49,7 +50,9 @@ class WomenProd extends Component {
       );
     });
     return (
-      <div className="container ">
+     
+      <div className="container-fluid">
+      <NavBar />
         <h3 className="center">Our items</h3>
         <div className="box row">{itemList}</div>
         {this.state.showView && (

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addToCart } from './actions/cartActions';
+import { addToCart } from "./actions/cartActions";
 import { Link } from "react-router-dom";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {faAngleUp, faAngleDown} from "@fortawesome/free-solid-svg-icons";
@@ -9,13 +9,17 @@ class ViewItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showview: false
+      showview: false,
+      qty: ""
       //  viewValue: false
     };
   }
-  handleClick = (id)=>{
-    this.props.addToCart(id);
-}
+  handleClick = item => {
+    this.props.addToCart(item);
+  };
+  // handleqty = e => this.setState({
+  //     qty: e.target.value
+  //   });
 
   render() {
     // Got this from pb remember
@@ -23,23 +27,29 @@ class ViewItem extends Component {
       <div className="px-5">
         <div className="row">
           <div className="col-sm-6">
-            <img id="target" className="viewImage" src={this.props.viewValue.img} />
+            <img
+              id="target"
+              className="viewImage"
+              src={this.props.viewValue.img}
+            />
           </div>
           <div className="col-sm-6">
             <h3 className="title">
               <b>{this.props.viewValue.title}</b>
             </h3>
-           
+
             <div className="">
               <h6>Desciption</h6>
               <div>{this.props.viewValue.desc}</div>
             </div>
- <div className="">
+            <div className="">
               <b>&#8358;{this.props.viewValue.price}</b>
             </div>
             <div>
               <span>QTY:</span>
-              <select>
+              <select
+              //onChange={this.handleqty} value={this.state.qty}
+              >
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -54,7 +64,15 @@ class ViewItem extends Component {
                 <option value="4">12</option>
               </select>
             </div>
-            <div><button onClick={()=>{this.handleClick(this.props.viewValue.id)}}>Add</button></div>
+            <div>
+              <button
+                onClick={() => {
+                  this.handleClick(this.props.viewValue);
+                }}
+              >
+                Add
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -67,12 +85,13 @@ const mapStateToProps = state => {
     // showView: state.showView
   };
 };
-const mapDispatchToProps= (dispatch)=>{
-    
-    return{ 
-        addToCart: (id)=>{dispatch(addToCart(id))}
+const mapDispatchToProps = dispatch => {
+  return {
+    addToCart: item => {
+      dispatch(addToCart(item));
     }
-}
+  };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(ViewItem);
 // viewItem: id => {
 //     const data = { id, type: "men" };

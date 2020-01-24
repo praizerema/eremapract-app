@@ -9,10 +9,10 @@ import {
 } from "./action-types/cart-actions";
 
 //add cart action
-export const addToCart = id => {
+export const addToCart = item => {
   return {
     type: ADD_TO_CART,
-    id
+    item
   };
 };
 //view item action
@@ -30,23 +30,23 @@ export const showViews = bool => {
   };
 };
 //remove item action
-export const removeItem = id => {
+export const removeItem = item => {
   return {
     type: REMOVE_ITEM,
-    id
+    item
   };
 };
 //subtract qt action
-export const subtractQuantity = id => {
+export const subtractQuantity = item => {
   return {
     type: SUB_QUANTITY,
-    id
+    item
   };
 };
 //add qt action
-export const addQuantity = id => {
+export const addQuantity = item => {
   return {
     type: ADD_QUANTITY,
-    id
+    item
   };
 };

@@ -158,79 +158,79 @@ const initState = {
   women: [
     {
       id: "1",
-      title: "kids(top & bottom)",
+      title: "Top & Skirt(2pcs)",
       desc:
-        "Childeren within the the age bracket of four and five years old should wear this",
-      price: 2500,
+        "This is made out o high quality fabrics and made by the best Fashion Stylists in town",
+      price: 6000,
       img: productBOne
     },
     {
       id: "2",
-      title: "Babies(top & bottom)",
-      desc: "These are very good design and fabric for babies",
-      price: 5500,
+      title: "Combination",
+      desc: "These are combinations of Top and pants and also gowns. They are of very high quality and bright colors",
+      price: 2500,
       img: productBTwo
     },
     {
       id: "3",
-      title: "Baby wear",
-      desc: "Ideal for babies. Good fabric",
-      price: 2900,
+      title: "Pencil Gown",
+      desc: "This is made out of good quality material ",
+      price: 4500,
       img: productBThree
     },
     {
       id: "4",
-      title: "top & bottom",
-      desc: "Good product, great pricee",
+      title: "Pencil Gown",
+      desc: "Good product, made out of a nice polyester material",
       price: 3300,
       img: productBFour
     },
     {
       id: "5",
-      title: "Pleated gown",
-      desc: "These are for your female childeren between four and five",
-      price: 2800,
+      title: "Sneakers",
+      desc: "This product is durable and made out of the best materials",
+      price: 7000,
       img: productBFive
     },
     {
       id: "6",
-      title: "kids(Shirt & Shorts)",
-      desc: "Unisex for kids between four and five",
-      price: 2600,
+      title: "Flat shoes",
+      desc: "Made out of velvet material",
+      price: 3000,
       img: productBSix
     },
     {
       id: "7",
-      title: "Fitted Teens gown",
-      desc: "Elastic for girls between thirteen and fifteen",
-      price: 2000,
+      title: "Flat shoes",
+      desc: "Made out of quality clothing material",
+      price: 2500,
       img: productBSeven
     },
     {
       id: "8",
-      title: "Peplum gowns",
-      desc: "Nice and free not suitable for kids above Ten",
-      price: 3000,
+      title: "Flat shoes",
+      desc: "Made out of quality leather material",
+      price: 4000,
       img: productBEight
     },
     {
       id: "9",
-      title: "Baloon gowns",
-      desc: "Nice for the season Age bracket ten and Twelve",
+      title: "Top",
+      desc: "Nice causual top for hot weather",
       price: 3500,
       img: ProductBNine
     },
     {
       id: "10",
-      title: "babies(complete)",
+      title: "Gown",
       desc:
         "Childeren within the the age bracket of three and four years old should wear this",
-      price: 1500,
+      price: 5500,
       img: ProductBTen
     },
     {
       id: "11",
-      title: "kids(top & pant)",
+      title: "Gown",
       desc:
         "Childeren within the the age bracket of two and three years old should wear this",
       price: 4500,
@@ -238,63 +238,63 @@ const initState = {
     },
     {
       id: "12",
-      title: "Jacket",
+      title: "Multi-Designs",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: productBTwelve
     },
     {
       id: "13",
-      title: "Jacket",
+      title: "Office Gowns",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: productBThirteen
     },
     {
       id: "14",
-      title: "Jacket",
+      title: "Wrap Top",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: productBFourteen
     },
     {
       id: "15",
-      title: "Jacket",
+      title: "Jean Pants",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: productBFifteeen
     },
     {
       id: "16",
-      title: "Jacket",
+      title: "Office Gown (Black)",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: productBSixteen
     },
     {
       id: "17",
-      title: "Jacket",
+      title: "Office Gown (Red)",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: productBSeventeen
     },
     {
       id: "18",
-      title: "Jacket",
+      title: "Dinner Gown",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: productBEighteen
     },
     {
       id: "19",
-      title: "Jacket",
+      title: "Dinner Gown",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: productBNineteen
     },
     {
       id: "20",
-      title: "Jacket",
+      title: "Causual Top",
       desc: "Available in all sizes and colors",
       price: 7500,
       img: productBTwenty
@@ -443,8 +443,8 @@ const initState = {
     }
   ],
   addedItems: [],
-  total: 0,
-  
+  total: 0
+
   //   showView: false,
   //   viewValue: {}
 };
@@ -466,12 +466,10 @@ const cartReducer = (state = initState, action) => {
 
     return {
       ...state,
-      viewValue: addedItem
+      viewValue: { ...addedItem, cart: data.type }
       //   showView: true
     };
-    
   }
-   
 
   if (action.type === SHOW_VIEW) {
     return {
@@ -479,67 +477,123 @@ const cartReducer = (state = initState, action) => {
       viewValue: {},
       showView: false
     };
-
   }
-  console.log(state.addedItems)
 
-  if(action.type === ADD_TO_CART){
-    let addedItem = (state.viewValue)
+  if (action.type === ADD_TO_CART) {
+    let addedItem = state.viewValue;
+    let data = action.item;
     //check if the action id exists in the addedItems
-   let existed_item= state.addedItems.find(item=> action.id === item.id)
-   console.log(state.addedItems)
+    console.log(data);
+    let existed_item = state.addedItems.find(
+      item => data.id === item.id && data.cart === item.cart
+    );
+    console.log(action.item);
+    console.log(state.addedItems);
+    console.log(data.cart);
 
-   if(existed_item)
-   {
-      addedItem.quantity += 1 
-       return{
-          ...state,
-           total: state.total + addedItem.price 
-            }
-  }
-  
-   else{
+
+
+    if (existed_item) {
+      addedItem.quantity += 1;
+      return {
+        ...state,
+        total: state.total + addedItem.price
+      };
+    } 
+    else {
       addedItem.quantity = 1;
       //calculating the total
-      let newTotal = state.total + addedItem.price 
-    //   console.log(newTotal)
-    //   console.log(addedItem)
-    console.log(state.addedItems)
-      return{
-          ...state,
-          addedItems: [...state.addedItems, addedItem],
-          total : newTotal,
-      }
-  
-      
+      let newTotal = state.total + addedItem.price;
+      //   console.log(newTotal)
+      //   console.log(addedItem)
+      return {
+        ...state,
+        addedItems: [...state.addedItems, addedItem],
+        total: newTotal
+      };
+    }
   }
 
-}
-if(action.type === REMOVE_ITEM){
-    let itemToRemove= state.addedItems.find(item=> action.id === item.id)
-    let new_items = state.addedItems.filter(item=> action.id !== item.id)
 
-    //calculating the total
-    let newTotal = state.total - (itemToRemove.price * itemToRemove.quantity )
+  if (action.type === REMOVE_ITEM) {
+    let data = action.item;
+    let itemToRemove = state.addedItems.find(
+      item => data.id === item.id && data.cart === item.cart
+    );
     console.log(itemToRemove)
-    return{
-        ...state,
-        addedItems: new_items,
-        total: newTotal
-    }
-}
-//INSIDE CART COMPONENT
-if(action.type=== ADD_QUANTITY){
-    let addedItem = (state.viewValue)
-      addedItem.quantity += 1
+       let new_items = state.addedItems.filter(item => data.id === item.id && data.cart !== item.cart);
+    //calculating the total
+    let newTotal = state.total - itemToRemove.price * itemToRemove.quantity;
+    return {
+      ...state,
+      addedItems: new_items,
+      total: newTotal
+    };
+  }
+
+// if(action.type === REMOVE_ITEM){
+//     let itemToRemove= state.addedItems.find(item=> action.item === item.id)
+//     let new_items = state.addedItems.filter(item=> action.item !== item.id)
+// console.log(action.item)
+//     //calculating the total
+//     let newTotal = state.total - (itemToRemove.price * itemToRemove.quantity )
+//     console.log(itemToRemove)
+//     return{
+//         ...state,
+//         addedItems: new_items,
+//         total: newTotal
+//     }
+// }
+
+  //INSIDE CART COMPONENT
+//   if (action.type === ADD_QUANTITY) {
+//     let data = action.item;
+//     let addedItem = state.addedItems.find(
+//       item => item.id === data.id && action.cart === item.cart
+//     );
+//     addedItem.quantity += 1;
+//     let newTotal = state.total + addedItem.price;
+//     return {
+//       ...state,
+//       total: newTotal
+//     };
+//   }
+
+   //INSIDE CART COMPONENT
+   if(action.type=== ADD_QUANTITY){
+    let addedItem = state.items.find(item=> item.id === action.id)
+      addedItem.quantity += 1 
       let newTotal = state.total + addedItem.price
       return{
           ...state,
           total: newTotal
       }
 }
-if(action.type=== SUB_QUANTITY){
-    let addedItem = (state.viewValue)
+//   if (action.type === SUB_QUANTITY) {
+//     let data = action.item;
+//     let addedItem = state.addedItems.find(
+//       item => item.id === data.id && action.cart === item.cart
+//     );
+//     //if the qt == 0 then it should be removed
+//     if (addedItem.quantity === 1) {
+//       let new_items = state.addedItems.filter(item => item.id !== data.id);
+//       let newTotal = state.total - addedItem.price;
+//       return {
+//         ...state,
+//         addedItems: new_items,
+//         total: newTotal
+//       };
+//     } else {
+//       addedItem.quantity -= 1;
+//       let newTotal = state.total - addedItem.price;
+//       return {
+//         ...state,
+//         total: newTotal
+//       };
+//     }
+//   }
+if(action.type=== SUB_QUANTITY){  
+    let addedItem = state.items.find(item=> item.id === action.id) 
     //if the qt == 0 then it should be removed
     if(addedItem.quantity === 1){
         let new_items = state.addedItems.filter(item=>item.id !== action.id)
@@ -558,8 +612,9 @@ if(action.type=== SUB_QUANTITY){
             total: newTotal
         }
     }
-
+    
 }
+
   // //INSIDE HOME COMPONENT
   // if(action.type === ADD_TO_CART){
   //       let addedItem = state.items.find(item=> item.id === action.id)
