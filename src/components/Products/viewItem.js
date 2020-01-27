@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addToCart } from "./actions/cartActions";
+import { viewItem } from "./actions/cartActions";
+
 import { Link } from "react-router-dom";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {faAngleUp, faAngleDown} from "@fortawesome/free-solid-svg-icons";
@@ -14,6 +16,7 @@ class ViewItem extends Component {
       //  viewValue: false
     };
   }
+  
   handleClick = item => {
     this.props.addToCart(item);
   };
@@ -24,16 +27,16 @@ class ViewItem extends Component {
   render() {
     // Got this from pb remember
     return (
-      <div className="px-5">
-        <div className="row">
-          <div className="col-sm-6">
+   
+        <div className="row px-5 py-5 container">
+          <div className="col-sm-4">
             <img
               id="target"
               className="viewImage"
               src={this.props.viewValue.img}
             />
           </div>
-          <div className="col-sm-6">
+          <div className="col-sm-8">
             <h3 className="title">
               <b>{this.props.viewValue.title}</b>
             </h3>
@@ -75,13 +78,14 @@ class ViewItem extends Component {
             </div>
           </div>
         </div>
-      </div>
+   
     );
   }
 }
 const mapStateToProps = state => {
   return {
     viewValue: state.viewValue
+    
     // showView: state.showView
   };
 };

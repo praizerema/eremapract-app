@@ -10,7 +10,7 @@ class WomenProd extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showview: false
+      // showview: false
       //  viewValue: false
     };
   }
@@ -22,21 +22,24 @@ class WomenProd extends Component {
   render() {
     let itemList = this.props.women.map(item => {
       return (
-        <div className=" col-sm-3 pb-5" >
-          <div className="card" key={item.id} onClick={() => {
-                this.handleView(item.id);
-              }}>
+        <div className=" col-sm-3 pb-5">
+          <div
+            className="card"
+            key={item.id}
+            onClick={() => {
+              this.handleView(item.id);
+            }}
+          >
             <div className="card-image">
-              <img src={item.img} className="itemImg" alt={item.title} />
+              <img src={item.img} className="itemImg " alt={item.title} />
               <span className="card-title">{item.title}</span>
             </div>
-          
-          <div className="card-content">
-            {/* <p>{item.desc}</p> */}
-            <span>
-              <b>{item.price}&#8358;</b>
-            </span>
-            {/* <span
+
+            <div className="card-content mt-1">
+              <span>
+                <b>{item.price}&#8358;</b>
+              </span>
+              {/* <span
               to="./cart"
               className="btn-floating px-5 pl-5"
               
@@ -44,47 +47,43 @@ class WomenProd extends Component {
               <FontAwesomeIcon icon={faPlusCircle} style={{color:"red"}}/>
               view
             </span> */}
-          </div>
+            </div>
           </div>
         </div>
       );
     });
     return (
-     
-      <div className="container-fluid">
-      <NavBar />
-        <h3 className="center">Our items</h3>
-        <div className="box row">{itemList}</div>
-        {this.state.showView && (
-          <div
-            className="card container"
-            style={{
-              position: "fixed",
-              top: "10px",
-              width: "500px",
-              height: "450px",
-              zIndex: "200"
-            }}
-          >
-          <span
-              className="close text-right py-4 px-3"
-              onClick={e => this.setState({ showView: false })}
+      <div className="">
+        <NavBar />
+        <div className="container">
+          {/* <h3 className="center">Get in here</h3> */}
+          <div className="box row">{itemList}</div>
+          {this.state.showView && (
+            <div
+              className="card container row mt-5"
+              style={{
+                position: "fixed",
+                top: "10px",
+                width: "100vw",
+                height: "100vh",
+                backgroundColor: "rgba(0, 0, 0, 0.7)",
+                zIndex: "200",
+                alignSelf: "center"
+              }}
             >
-              &#10005;
-            </span>
-          <ViewItem />
-
-            {/* <span
-              className="close"
-              onClick={e => this.setState({ showView: false })}
-            >
-              &#10005;
-            </span>
-            {this.props.viewValue.desc}
-            <h1>{this.props.viewValue.title}</h1>
-            <img src={this.props.viewValue.img} alt=""/> */}
-          </div>
-        )}
+             
+              <div className="viewBody">
+                  <span
+                className="close text-right"
+                onClick={e => this.setState({ showView: false })}
+              >
+                &#10005;
+              </span> 
+              <ViewItem />
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     );
   }
@@ -92,18 +91,17 @@ class WomenProd extends Component {
 
 const mapStateToProps = state => {
   return {
-    women: state.women,
+    women: state.women
     // viewValue: state.viewValue
     // showView: state.showView
   };
 };
 
-const mapDispatchToProps = dispatch => { 
-
+const mapDispatchToProps = dispatch => {
   return {
     viewItem: id => {
-        const data = { id, type: "women" };
-        dispatch(viewItem(data));
+      const data = { id, type: "women" };
+      dispatch(viewItem(data));
     }
     // showViews: bool => {
     //   dispatch(showViews(bool));

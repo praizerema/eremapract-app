@@ -475,7 +475,6 @@ const cartReducer = (state = initState, action) => {
     return {
       ...state,
       viewValue: {},
-      showView: false
     };
   }
 

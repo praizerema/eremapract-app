@@ -43,29 +43,35 @@ class KidsProd extends Component{
         })
   
         return(
-            <div className= "container-fluid">
+            <div className= "">
             <NavBar />
+            <div className= "container">
+
                 <h3 className="center">Our items</h3>
                 <div className="box row">
                     {itemList}</div>
                     {this.state.showView && (
           <div
-            className="card container"
+            className="card container mt-5"
             style={{
-              position: "fixed",
+                position: "fixed",
               top: "10px",
-              width: "500px",
-              height: "450px",
-              zIndex: "200"
+              width: "100vw",
+  height: "100vh",
+  backgroundColor: "rgba(0, 0, 0, 0.7)",
+              zIndex: "200",
+              alignSelf: "center"
             }}
           >
-          <span
-              className="close text-right py-4 px-3"
-              onClick={e => this.setState({ showView: false })}
-            >
-              &#10005;
-            </span>
-          <ViewItem />
+         <div className="viewBody">
+                  <span
+                className="close text-right"
+                onClick={e => this.setState({ showView: false })}
+              >
+                &#10005;
+              </span> 
+              <ViewItem />
+              </div>
 
             {/* <span
               className="close"
@@ -78,6 +84,7 @@ class KidsProd extends Component{
             <img src={this.props.viewValue.img} alt=""/> */}
           </div>
         )}
+            </div>
             </div>
         )
        }   
