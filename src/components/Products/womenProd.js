@@ -67,8 +67,9 @@ class WomenProd extends Component {
                 width: "100vw",
                 height: "100vh",
                 backgroundColor: "rgba(0, 0, 0, 0.7)",
-                zIndex: "200",
-                alignSelf: "center"
+                zIndex: "1000",
+                alignSelf: "center",
+               
               }}
             >
              
