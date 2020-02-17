@@ -5,7 +5,6 @@ import { removeItem,addQuantity,subtractQuantity} from './actions/cartActions';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faAngleUp, faAngleDown} from "@fortawesome/free-solid-svg-icons";
 import AddMore from "./addMore";
-import NavBar from "./navBar"
 
 class Cart extends Component{
  //to remove the item completely
@@ -56,7 +55,6 @@ handleSubtractQuantity = (item)=>{
              )
        return(
             <div className="container-fluid">
-            <NavBar />
                 <div className="cart">
 
                     <h5>You have ordered:</h5>

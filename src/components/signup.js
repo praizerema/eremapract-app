@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.css";
+import { Link } from "react-router-dom";
 
 class Signup extends React.Component {
   constructor(props) {
@@ -74,7 +75,7 @@ class Signup extends React.Component {
   render() {
     return (
       <div className="">
-        <div className="signupwrapper">
+        <div className="signupwrapper container">
           <div className="signupPage">
             <h2 clclassNameass="signupHead">Signup</h2>
             <form
@@ -163,7 +164,7 @@ class Signup extends React.Component {
               </div>
               <p className="col-12">
                 By clicking join you agree to erema's
-                <a href="#">terms of agreement</a>.
+                <Link className="black" to="#">terms of agreement</Link>.
               </p>
               <div className="col-12">
                 <button
@@ -176,12 +177,12 @@ class Signup extends React.Component {
               </div>
 
               <p className="col-12">
-                Already on erema? <a href="./login">Signin</a>
+                Already on erema? <Link className="black" to="/login">Signin</Link>
               </p>
             </form>
           </div>
         </div>
-        <div className="copyr"> copyright @Erema 2019 </div>
+        <footer className="copyr"> copyright @Erema 2019 </footer>
       </div>
     );
   }

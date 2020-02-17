@@ -15,6 +15,10 @@ import kidsProd from './components/Products/kidsProd';
 import Detail from './components/Products/detail';
 import Cart from './components/Products/cart';
 import Men from './components/Products/men';
+import AllProd from './components/Products/allProd';
+import NavBar from './components/Products/navBar'
+import TopHeader from './components/TopNav/topNav';
+// import * as ROUTES from "../../constants/routes";
 
 // import viewItem from './components/Products/viewItem';
 
@@ -23,10 +27,12 @@ import Men from './components/Products/men';
 class App extends Component {
   render(){
     return (
-  
   <BrowserRouter>  
+
     <div className="App">
+    <NavBar />
        <Switch>
+      
     <Route exact path="/" component={Home} />
     <Route exact path="/join" component={Join} />
     <Route exact path="/login" component={Login} />
@@ -38,7 +44,10 @@ class App extends Component {
     <Route exact path="/men" component={Men} />
     <Route exact path="/kids" component={kidsProd} />
     <Route exact path="/details" component={Detail} />
+    <Route exact path="/all" component={AllProd} />
     <Route exact path="/cart" component={Cart} />
+    <Route exact path="/tophead" component={TopHeader} />
+
 
 
     {/* <Route exact path="/view" component={viewItem} /> */}

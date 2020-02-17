@@ -26,27 +26,25 @@ class WomenProd extends Component {
           <div
             className="card"
             key={item.id}
-            onClick={() => {
-              this.handleView(item.id);
-            }}
           >
             <div className="card-image">
               <img src={item.img} className="itemImg " alt={item.title} />
               <span className="card-title">{item.title}</span>
             </div>
 
-            <div className="card-content mt-1">
-              <span>
+            <div className="card-content mt-1 px-2">
+              <span className="mr-3">
                 <b>{item.price}&#8358;</b>
               </span>
-              {/* <span
-              to="./cart"
-              className="btn-floating px-5 pl-5"
-              
-            >
-              <FontAwesomeIcon icon={faPlusCircle} style={{color:"red"}}/>
-              view
-            </span> */}
+              <button
+                className="btn btn-floating btn-small btn-view px-5 pl-5"
+                onClick={() => {
+                  this.handleView(item.id);
+                }}
+              >
+                View
+
+              </button>
             </div>
           </div>
         </div>
@@ -54,7 +52,7 @@ class WomenProd extends Component {
     });
     return (
       <div className="">
-        <NavBar />
+        <h3 className="center">Enjoy your Shopping</h3>
         <div className="container">
           {/* <h3 className="center">Get in here</h3> */}
           <div className="box row">{itemList}</div>

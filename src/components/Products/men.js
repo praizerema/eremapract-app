@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ViewItem from "../Products/viewItem";
 import { viewItem } from "./actions/cartActions";
-import NavBar from "./navBar";
 // import { addToCart } from './actions/cartActions';
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {faPlusCircle} from "@fortawesome/free-solid-svg-icons";
@@ -10,7 +9,7 @@ class Men extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        // showview: false,
+        showview: true,
       viewValue: {}
     };
   }
@@ -26,9 +25,6 @@ class Men extends Component {
           <div
             className="card"
             key={item.id}
-            onClick={() => {
-                  this.handleView(item.id);
-                }}
           >
             <div className="card-image">
               <img
@@ -38,21 +34,21 @@ class Men extends Component {
               />
               <span className="card-title">{item.title}</span>
             </div>
-            <div className="card-content">
+            <div className="card-content px-2 mt-1">
               {/* <p>{item.desc}</p> */}
-              <span>
+              <span className="mr-3">
                 <b>Price: {item.price}&#8358;</b>
               </span>
-              {/* <button
+              <button
                 to="/"
-                className="btn-floating px-5 pl-5"
+                className="btn btn-floating btn-small btn-view  px-5 pl-5"
                 onClick={() => {
                   this.handleView(item.id);
                 }}
               >
                 View
-                <FontAwesomeIcon icon={faPlusCircle} style={{color:"red"}}/>
-              </button> */}
+
+              </button>
             </div>
           </div>
         </div>
@@ -61,10 +57,9 @@ class Men extends Component {
 
     return (
       <div className="">
-      <NavBar />
-      <div className="container-fluid">
+      <div className="container">
 
-        <h3 className="center">Our items</h3>
+        <h3 className="center">Enjoy your Shopping</h3>
         <div className="box row">{itemList}</div>
         {this.state.showView && (
           <div

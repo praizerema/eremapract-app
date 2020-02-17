@@ -23,6 +23,7 @@ handleSubtractQuantity = (id)=>{
         let product = this.props.items.map(item=>{
                     return(
                        
+                       
                         <div className="collection-item avatar" key={item.id}>
                                     <div className="item-img "> 
                                         <img src={item.img} alt={item.img} className=""/>

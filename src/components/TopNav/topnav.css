@@ -1,0 +1,54 @@
+.sbt-header--container {
+  background: #fafcfd;
+  margin: 0 !important;
+  padding-left: 4em;
+}
+.sbt-header--container > .ui.text.menu {
+  margin: 0 !important;
+}
+.sbt-header--container .nav-link {
+  color: #c2c2c2 !important;
+  padding: 20px;
+}
+
+.sbt-header--container .nav-link:hover {
+  color: #676767 !important;
+}
+
+.sbt-header--container .logo-container {
+  height: auto;
+  width: 100px;
+}
+
+.sbt-header--container .menu-item {
+  margin-left: 2.5em;
+  display: grid;
+  font-size: 1.1em;
+  color: #c2c2c2 !important;
+}
+
+.sbt-header--container .menu-item:hover {
+  color: #676767 !important;
+}
+.sbt-header--container .merchant-details--container {
+  padding-right: 3em;
+  display: flex;
+  padding-left: 2em;
+}
+
+.sbt-header--container input {
+  border: none !important;
+  border-bottom: 1px solid #cccdd9 !important;
+  font-size: 0.815em !important;
+  width: 400px;
+  background-color: transparent;
+}
+
+i.icon.search {
+  font-size: 0.8em;
+  color: #cccdd9;
+  right: 20px !important;
+}
+.ui.text.menu .item {
+  color: #333 !important;
+}

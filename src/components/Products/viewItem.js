@@ -11,7 +11,7 @@ class ViewItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showview: false,
+      showview: true,
       qty: ""
       //  viewValue: false
     };
@@ -19,10 +19,12 @@ class ViewItem extends Component {
   
   handleClick = item => {
     this.props.addToCart(item);
+    alert("Item added to cart please go to cart to proceed");
+    // this.setState({ showView: false });
   };
-  // handleqty = e => this.setState({
-  //     qty: e.target.value
-  //   });
+  handleqty = e => this.setState({
+      qty: e.target.value
+    });
 
   render() {
     // Got this from pb remember
@@ -48,10 +50,10 @@ class ViewItem extends Component {
             <div className="">
               <b>&#8358;{this.props.viewValue.price}</b>
             </div>
-            <div>
+            <div className="mt-2">
               <span>QTY:</span>
               <select
-              //onChange={this.handleqty} value={this.state.qty}
+              onChange={this.handleqty} value={this.state.qty}
               >
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -68,9 +70,9 @@ class ViewItem extends Component {
               </select>
             </div>
             <div>
-              <button
+              <button className="btn btn-view mt-3"
                 onClick={() => {
-                  this.handleClick(this.props.viewValue);
+                  this.handleClick(this.props.viewValue)
                 }}
               >
                 Add
