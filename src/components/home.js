@@ -9,14 +9,15 @@ import productBTwo from "../assets/image/FashionWomen/download (2).jpeg";
 import productBThree from "../assets/image/FashionWomen/download (3).jpeg";
 import MenFive from "../assets/image/fashionMen/men5.jpeg";
 import MenSix from "../assets/image/fashionMen/men6.jpeg";
-import Footer from "./footer"
+import Footer from "./footer";
+import { withAuthorization } from './Session';
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faArrowRight, faMinus } from "@fortawesome/free-solid-svg-icons";
 
 class Home extends React.Component {
   render() {
     return (
-      <div className="container-fuild">
+      <div className="container-fuild"  style={{overflowX: "hidden"}}>
         <div>
           <div>
 
@@ -68,4 +69,5 @@ class Home extends React.Component {
     );
   }
 }
-export default Home;
+const condition = authUser => authUser;
+export default  withAuthorization (condition) (Home);

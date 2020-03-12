@@ -58,6 +58,7 @@ import {
   ADD_QUANTITY,
   SHOW_VIEW
 } from "../actions/action-types/cart-actions";
+import cart from "../cart";
 
 const initState = {
   //womn
@@ -158,7 +159,7 @@ const initState = {
       desc:
         "This is made out o high quality fabrics and made by the best Fashion Stylists in town",
       price: 6000,
-      img: productBOne
+      img: productBOne,
     },
     {
       id: "2",
@@ -475,32 +476,22 @@ const cartReducer = (state = initState, action) => {
   }
 
   if (action.type === ADD_TO_CART) {
-    let addedItem = state.viewValue;
-    let data = action.item;
+    let addedItem = action.item;
+    let rqty= addedItem.quantity
     //check if the action id exists in the addedItems
-    console.log(data);
     let existed_item = state.addedItems.find(
-      item => data.id === item.id && data.cart === item.cart
+      item => addedItem.id === item.id && addedItem.cart === item.cart
     );
-    console.log(action.item);
-    console.log(state.addedItems);
-    console.log(data.cart);
-
-
-
     if (existed_item) {
-      addedItem.quantity += 1;
+      existed_item.quantity= existed_item.quantity + rqty
       return {
         ...state,
-        total: state.total + addedItem.price
-      };
+        total: state.total +  (addedItem.price * addedItem.quantity)
     } 
+  }
     else {
-      addedItem.quantity = 1;
       //calculating the total
-      let newTotal = state.total + addedItem.price;
-      //   console.log(newTotal)
-      //   console.log(addedItem)
+      let newTotal = state.total + (addedItem.price * addedItem.quantity);
       return {
         ...state,
         addedItems: [...state.addedItems, addedItem],
@@ -515,8 +506,11 @@ const cartReducer = (state = initState, action) => {
     let itemToRemove = state.addedItems.find(
       item => data.id === item.id && data.cart === item.cart
     );
-    console.log(itemToRemove)
-       let new_items = state.addedItems.filter(item => data.id === item.id && data.cart !== item.cart);
+    console.log(data.cart)
+    
+
+       let new_items = state.addedItems.filter(item => !(data.id === item.id && data.cart === item.cart));
+
     //calculating the total
     let newTotal = state.total - itemToRemove.price * itemToRemove.quantity;
     return {

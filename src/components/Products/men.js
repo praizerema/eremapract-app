@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ViewItem from "../Products/viewItem";
 import { viewItem } from "./actions/cartActions";
+import { withAuthorization } from '../Session';
+
 // import { addToCart } from './actions/cartActions';
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {faPlusCircle} from "@fortawesome/free-solid-svg-icons";

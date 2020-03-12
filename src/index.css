@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.errdiv{
+  background-color: rgba(245, 22, 22, 0.211);
+  padding: 10px;
+  color: rgb(252, 26, 26);
+  font-size: 13px;
+  /* text-align: center; */
+align-items: center;
+}

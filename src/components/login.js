@@ -3,28 +3,33 @@ import "./styles.css";
 import NotificationManager from "./utils/notifications";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { Link } from 'react-router-dom';
 import Footer from "./footer";
 import LOGOImg from "../assets/image/Group 1 (1).png";
-
-
-
-
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faArrowRight, faMinus } from "@fortawesome/free-solid-svg-icons";
+import {Link, withRouter } from "react-router-dom";
+import { compose } from "recompose";
+import { withFirebase } from "./Firebase";
+import * as ROUTES from "./constants/routes";
+const SignInPage = () => (
+  <div>
+    <SignInForm />
+  </div>
+);
+const INITIAL_STATE = {
+  selectedIndex: 0,
+  valor: "",
+  email: "",
+  password: "",
+  payload: {},
+  process: false,
+  error: {},
+  error1: null,
+  showerr: true,
+};
 
 class Login extends React.Component {
     constructor(props){
         super(props);
-        this.state= {
-            selectedIndex: 0,
-            valor: "",
-            email: "",
-            password: "",
-            payload: {},
-            process: false,
-            error: {}
-        }
+        this.state= { ...INITIAL_STATE };
     }
     NotificationPrompt(type, title, details) {
         const self = this;
@@ -38,11 +43,11 @@ class Login extends React.Component {
           }
         });
       }
-     handleEmail=(e)=>{
-        this.setState({
-            email: e.target.value});
-     }
      handlePassword=(e)=>{
+        this.setState({
+            password: e.target.value});
+     }
+     handleEmail=(e)=>{
         var thenum = e.target.value.match(/[\w@.-]*/, "");
     if (thenum !== null) {
       this.setState({
@@ -64,13 +69,22 @@ class Login extends React.Component {
           );
           this.setState({ process: false });
         } else {
-          const params = {
-            data: {
-              email,
-              password
-            },
-            location: "login"
-          };
+          const { email, password } = this.state;
+    this.props.firebase
+      .doSignInWithEmailAndPassword(email, password)
+      .then(() => {
+        this.setState({ ...INITIAL_STATE });
+        this.props.history.push(ROUTES.HOME);
+      })
+      .catch(error1 => {
+        this.NotificationPrompt(
+          "danger",
+          "Error",
+          error1.message
+        );
+        // this.setState({ error1 });
+        this.setState({ process: false });
+      });
         //   this.props.userLogin(params);
           setTimeout(() => {
             if (this.state.process) {
@@ -85,27 +99,30 @@ class Login extends React.Component {
         }
       };
     
-      componentWillReceiveProps(newProps) {
-        if (
-          newProps.error_details &&
-          newProps.error_details.error_source === "login"
-        ) {
-          this.setState({ process: false });
-          this.NotificationPrompt(
-            "danger",
-            newProps.error_details.status,
-            newProps.error_details.message
-          );
-        }
-      }
+      // componentWillReceiveProps(newProps) {
+      //   if (
+      //     newProps.error_details &&
+      //     newProps.error_details.error_source === "login"
+      //   ) {
+      //     this.setState({ process: false });
+      //     this.NotificationPrompt(
+      //       "danger",
+      //       newProps.error_details.status,
+      //       newProps.error_details.message
+      //     );
+      //   }
+      // }
     render() {
+      const { email, password, error1 } = this.state;
+      // console.log(email)
     return (
       <div className="container-fluid">
-        <div class="loginPage p-4">
-            <div class="loginHead text-muted"> 
+        <div className="loginPage p-4">
+            <div className="loginHead text-muted"> 
               <img src={LOGOImg} style={{ width: "10%", height: "10%" }} />
               </div>
             <NotificationManager msg={this.state.error} />
+            {/* {error1 && <div className="errdiv"><span className="float-right pb-4" onClick={e => this.setState({ error1: false })}>X</span><div className="text-center">{error1.message}</div> </div>} */}
             <form onSubmit={e => {
                 e.preventDefault();
                 this.setState({ process: true });
@@ -114,18 +131,19 @@ class Login extends React.Component {
                   this.state.email,
                   this.state.password
                 );
-              }}>
-                <div class="form-group">
+              }}
+              >
+                <div className="form-group">
                     <label for='email'>Email</label>
-                <input class="form-control" name='email' id='email' type="text" placeholder="Email"
-                  onClick={this.handleEmail}/>
+                <input className="form-control" name='email' id='email' type="text" placeholder="Email"
+                  onChange={this.handleEmail} value={email}/>
                 </div>
-                <div class="form-group"> 
+                <div className="form-group"> 
                     <label for='password'>Password</label>
-                <input class="form-control" name='password' id='password' type="password" placeholder="password" 
-                onClick={this.handlePassword}/>
+                <input className="form-control" name='password' id='password' type="password" placeholder="password" 
+                onChange={this.handlePassword} value={password}/>
             </div>
-                <div class="text-center"> 
+                <div className="text-center"> 
                     {/* <button className="btn btn-login font-weight-bold mb-3" type="button" name="login" onclick="func()">Login</button> */}
                     <button
                 type="submit"
@@ -155,5 +173,10 @@ class Login extends React.Component {
     );
   }
 }
-export default Login;
+const SignInForm = compose(
+  withRouter,
+  withFirebase
+)(Login);
+export default SignInPage;
+export { SignInForm };
 

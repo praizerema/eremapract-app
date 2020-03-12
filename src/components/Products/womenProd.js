@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ViewItem from "../Products/viewItem";
 import { viewItem } from "./actions/cartActions";
+import { withAuthorization } from '../Session';
 import NavBar from "./navBar";
 // import { showViews } from "./actions/cartActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 import Join from "./components/join";
 import Login from "./components/login";
@@ -18,6 +18,10 @@ import Men from './components/Products/men';
 import AllProd from './components/Products/allProd';
 import NavBar from './components/Products/navBar'
 import TopHeader from './components/TopNav/topNav';
+import * as ROUTES from "./components/constants/routes";
+import { withAuthentication } from './components/Session';
+import SignOutButton from './components/SignOut';
+
 // import * as ROUTES from "../../constants/routes";
 
 // import viewItem from './components/Products/viewItem';
@@ -27,26 +31,22 @@ import TopHeader from './components/TopNav/topNav';
 class App extends Component {
   render(){
     return (
-  <BrowserRouter>  
+  <Router>  
 
     <div className="App">
-    <NavBar />
-       <Switch>
-      
-    <Route exact path="/" component={Home} />
-    <Route exact path="/join" component={Join} />
-    <Route exact path="/login" component={Login} />
-    <Route exact path="/signup" component={Signup} />
-    <Route exact path="/calculator" component={Calculator} />
-    <Route exact path="/contactUs" component={ContactUs} />
-    <Route exact path="/floatinglab" component={FloatingLab} />
-    <Route exact path="/women" component={womenProd} />
-    <Route exact path="/men" component={Men} />
-    <Route exact path="/kids" component={kidsProd} />
-    <Route exact path="/details" component={Detail} />
-    <Route exact path="/all" component={AllProd} />
-    <Route exact path="/cart" component={Cart} />
-    <Route exact path="/tophead" component={TopHeader} />
+    <NavBar /> 
+   
+    <Route exact path={ROUTES.HOME} component={Home} />
+    <Route exact path={ROUTES.SIGNIN} component={Login} />
+    <Route exact path={ROUTES.SIGNUP} component={Signup} />
+    <Route exact path={ROUTES.CONTACTUS} component={ContactUs} />
+    {/* <Route exact path={ROUTES.HOME} component={FloatingLab} /> */}
+    <Route exact path={ROUTES.WOMEN} component={womenProd} />
+    <Route exact path={ROUTES.MEN} component={Men} />
+    <Route exact path={ROUTES.KIDS} component={kidsProd} />
+    {/* <Route exact path={ROUTES.HOME} component={Detail} /> */}
+    <Route exact path={ROUTES.CART} component={Cart} />
+    {/* <Route exact path={ROUTES.HOME} component={TopHeader} /> */}
 
 
 
@@ -56,10 +56,8 @@ class App extends Component {
     <Route path="/upload" component={ImageUpload} />
     <Route component={"error"} /> */}
     <Route component={"error"} />
-  </Switch>
-
    </div>
-   </BrowserRouter>
+   </Router>
   );}
    
 }
@@ -69,4 +67,4 @@ class App extends Component {
  
 
 
-export default App;
+export default withAuthentication(App);

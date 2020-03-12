@@ -78,3 +78,43 @@ const mapDispatchToProps = (dispatch)=>{
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Detail)
 
+
+
+// if (action.type === ADD_TO_CART) {
+//     let addedItem = state.viewValue;
+//     let data = action.item;
+//     let rqty= state.viewValue.quantity
+//     //check if the action id exists in the addedItems
+//     console.log(data);
+//     let existed_item = state.addedItems.find(
+//       item => data.id === item.id && data.cart === item.cart
+//     );
+//     console.log(action.item);
+//     console.log(state.addedItems);
+//     console.log(data.cart);
+
+
+
+//     if (existed_item) {
+//       console.log(addedItem.quantity)
+//     addedItem.quantity= parseInt(addedItem.quantity) + parseInt(rqty)
+//       console.log(addedItem.quantity)
+//       return {
+//         ...state,
+//         total: state.total + addedItem.price
+//       };
+//     } 
+//     else {
+//       addedItem.quantity = rqty;
+//       console.log(addedItem.quantity)
+//       //calculating the total
+//       let newTotal = state.total + addedItem.price;
+//       //   console.log(newTotal)
+//       //   console.log(addedItem)
+//       return {
+//         ...state,
+//         addedItems: [...state.addedItems, addedItem],
+//         total: newTotal
+//       };
+//     }
+//   }

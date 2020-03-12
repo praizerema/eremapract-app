@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+import { connect } from 'react-redux';
 //import { addShipping } from './actions/cartActions'
 class AddMore extends Component{
 
@@ -30,7 +31,7 @@ class AddMore extends Component{
                         <li className="collection-item"><b>Total: {this.props.total} &#8358;</b></li>
                     </div>
                     <div className="checkout">
-                        <button className="waves-effect waves-light btn">Checkout</button>
+                        <button className="waves-effect waves-light btn"> <Link to="/login">Checkout</Link> </button>
                     </div>
                  </div>
         )

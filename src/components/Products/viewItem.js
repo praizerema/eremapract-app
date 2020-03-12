@@ -12,18 +12,19 @@ class ViewItem extends Component {
     super(props);
     this.state = {
       showview: true,
-      qty: ""
+      qty: "1"
       //  viewValue: false
     };
   }
   
   handleClick = item => {
-    this.props.addToCart(item);
+    this.props.addToCart({...item,quantity:parseInt(this.state.qty)});
     alert("Item added to cart please go to cart to proceed");
-    // this.setState({ showView: false });
+    return;
   };
   handleqty = e => this.setState({
       qty: e.target.value
+    
     });
 
   render() {
@@ -53,20 +54,20 @@ class ViewItem extends Component {
             <div className="mt-2">
               <span>QTY:</span>
               <select
-              onChange={this.handleqty} value={this.state.qty}
-              >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="4">5</option>
-                <option value="4">6</option>
-                <option value="4">7</option>
-                <option value="4">8</option>
-                <option value="4">9</option>
-                <option value="4">10</option>
-                <option value="4">11</option>
-                <option value="4">12</option>
+              onChange={this.handleqty} value={this.state.qty} required>
+              {/* <option>Choose</option> */}
+                <option value= '1' selected>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
               </select>
             </div>
             <div>
@@ -87,8 +88,6 @@ class ViewItem extends Component {
 const mapStateToProps = state => {
   return {
     viewValue: state.viewValue
-    
-    // showView: state.showView
   };
 };
 const mapDispatchToProps = dispatch => {

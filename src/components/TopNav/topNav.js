@@ -4,21 +4,12 @@ import './topnav.css';
 class TopHeader extends Component {
   constructor(props) {
     super(props);
-    this.handleMouseHover = this.handleMouseHover.bind(this);
+    // this.handleMouseHover = this.handleMouseHover.bind(this);
     this.state = {
-      isHovering: false,
+     
     };
   }
 
-  handleMouseHover() {
-    this.setState(this.toggleHoverState);
-  }
-
-  toggleHoverState(state) {
-    return {
-      isHovering: !state.isHovering,
-    };
-  }
     // const [activeItem, setActiveItem] = useState({});
     // const handleItemClick = (e, { name }) => setActiveItem({ name });
   render() {
@@ -39,12 +30,10 @@ class TopHeader extends Component {
 
              <Menu.Item
                         name='Test'
-                        onPointerOver={this.handleMouseHover}
-                        onPointer={this.handleMouseHover}
-                        className={''}
+                        className={""}
                         href="/"
                     />
-
+                 
 
                 <Menu.Menu position="right">
                     <div className="d-flex border-right menu-item">
@@ -78,12 +67,38 @@ class TopHeader extends Component {
             </Menu>
         </div>
         {this.state.isHovering && <div style={{zIndex: "200",position: "fixed", top: "16vh", width: "40vw", height: "50vh", backgroundColor: "rgba(0, 0, 0, 0.7)"}}> <a href="#">Hovering right meow! 🐱</a></div>}
+        <div className="">
+        <nav className="nav">
+       <li><a>
+           test
+           </a>
+           <subMenu/>
+           </li>
+      </nav>
+        </div>
+
+                 
       </div>
     );
   }
 }
 export default TopHeader;
-
+const subMenu = ()=>{
+    return (
+        <ul className="nav__submenu">
+          <li className="nav__submenu-item ">
+            <a>Our Company</a>
+          </li>
+          <li className="nav__submenu-item ">
+            <a>Our Team</a>
+          </li>
+          <li className="nav__submenu-item ">
+            <a>Our Portfolio</a>
+          </li>
+        </ul>
+      )
+    
+  }
 // import React, { useState } from 'react';
 // import { Input, Menu, Image, Icon, Item } from 'semantic-ui-react';
 // import './topnav.css';

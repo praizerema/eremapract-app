@@ -5,6 +5,7 @@ import { removeItem,addQuantity,subtractQuantity} from './actions/cartActions';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faAngleUp, faAngleDown} from "@fortawesome/free-solid-svg-icons";
 import AddMore from "./addMore";
+import { withAuthorization } from '../Session';
 
 class Cart extends Component{
  //to remove the item completely
@@ -19,6 +20,16 @@ handleAddQuantity = (item)=>{
 handleSubtractQuantity = (item)=>{
     this.props.subtractQuantity(item);
 }
+
+componentDidMount() {
+    this.setState({ loading: true });
+    this.props.firebase.users().on('value', snapshot => {
+      this.setState({
+        addedItems: snapshot.val(),
+        loading: false,
+      });
+    });
+  }
     render(){
               
         let addedItems = this.props.items.length ?
@@ -71,7 +82,6 @@ handleSubtractQuantity = (item)=>{
 
 const mapStateToProps = (state)=>{
     console.log(state.addedItems)
-
     return{
         items: state.addedItems,
         //addedItems: state.addedItems
@@ -84,5 +94,6 @@ const mapDispatchToProps = (dispatch)=>{
         subtractQuantity: (item)=>{dispatch(subtractQuantity(item))}
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Cart)
+const condition = authUser => !!authUser; 
+export default withAuthorization(condition) (connect(mapStateToProps,mapDispatchToProps)(Cart))
 
