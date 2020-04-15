@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import WomenProd from './womenProd';
-import Men from './men';
+import Men from './menProd';
 import KidsProd from './kidsProd';
 class AllProd extends Component {
   constructor(props) {

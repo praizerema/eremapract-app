@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ViewItem from "../Products/viewItem";
-import { viewItem } from "./actions/cartActions";
+import { viewItem, getWomenProduct,
+  getWomenProductDis} from "./actions/cartActions";
 import { withAuthorization } from '../Session';
 import NavBar from "./navBar";
 // import { showViews } from "./actions/cartActions";
@@ -13,15 +14,23 @@ class WomenProd extends Component {
     this.state = {
       // showview: false
       //  viewValue: false
+      showview: true,
+      viewValue: {},
+      women:[]
     };
   }
   handleView = id => {
     this.props.viewItem(id);
     this.setState({ showView: true });
   };
-
+  UNSAFE_componentWillMount() {
+    this.props.getWomenProduct().then(data => {
+      this.setState({ women: data });
+      this.props.getWomenProductDis(data);
+    });
+  }
   render() {
-    let itemList = this.props.women.map(item => {
+    let itemList = this.state.women.map(item => {
       return (
         <div className=" col-sm-3 pb-5">
           <div
@@ -29,7 +38,7 @@ class WomenProd extends Component {
             key={item.id}
           >
             <div className="card-image">
-              <img src={item.img} className="itemImg " alt={item.title} />
+              <img src={require("../../assets/image/" + item.image)} className="itemImg " alt={item.title} />
               <span className="card-title">{item.title}</span>
             </div>
 
@@ -52,7 +61,7 @@ class WomenProd extends Component {
       );
     });
     return (
-      <div className="">
+      <div className="women-page">
         <h3 className="center">Enjoy your Shopping</h3>
         <div className="container">
           {/* <h3 className="center">Get in here</h3> */}
@@ -90,8 +99,11 @@ class WomenProd extends Component {
 }
 
 const mapStateToProps = state => {
+   console.log(state.women)
+
   return {
     women: state.women
+    
     // viewValue: state.viewValue
     // showView: state.showView
   };
@@ -102,7 +114,12 @@ const mapDispatchToProps = dispatch => {
     viewItem: id => {
       const data = { id, type: "women" };
       dispatch(viewItem(data));
-    }
+    },
+    getWomenProductDis: data => {
+      console.log(data)
+      dispatch(getWomenProductDis(data));
+    },
+    getWomenProduct
     // showViews: bool => {
     //   dispatch(showViews(bool));
     // }

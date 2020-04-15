@@ -19,7 +19,7 @@ const NavBar = () => (
 );
 const NavigationAuth = () => (
  
-      <Navbar bg="" expand="lg" className="navBack sticky-top">
+      <Navbar bg="" expand="lg" className="navBack fixed-top">
         <Navbar.Brand>
           <Link to={ROUTES.HOME} className="navbar-brand">
             <img src={LOGOImg} className="logoImg" />
@@ -59,7 +59,7 @@ const NavigationAuth = () => (
     );
     const NavigationNonAuth = () => (
 
-      <Navbar bg="" expand="lg" className="navBack sticky-top">
+      <Navbar bg="" expand="lg" className="navBack fixed-top">
         <Navbar.Brand>
           <Link to={ROUTES.HOME} className="navbar-brand">
             <img src={LOGOImg} className="logoImg" />

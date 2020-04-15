@@ -1,14 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ViewItem from "../Products/viewItem";
-import { viewItem } from "./actions/cartActions";
+import { viewItem,  getKidsProduct,
+  getKidsProductDis } from "./actions/cartActions";
+import firebase from "firebase";
+import { db } from "../Firebase/firebase"
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {faPlusCircle} from "@fortawesome/free-solid-svg-icons";
 class KidsProd extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showview: false
+      showview: false,
+      kids: []
       //  viewValue: false
     };
   }
@@ -16,9 +20,21 @@ class KidsProd extends Component {
     this.props.viewItem(id);
     this.setState({ showView: true });
   };
+  UNSAFE_componentWillMount() {
+    this.props.getKidsProduct().then(data => {
+      this.setState({ kids: data });
+      this.props.getKidsProductDis(data);
+    });
+  }
 
   render() {
-    let itemList = this.props.kids.map(item => {
+//     db.collection("product")
+// .get()
+// .then(querySnapshot => {
+//   const data = querySnapshot.docs.map(doc => doc.data());
+//   console.log(data); // array of cities objects
+// });
+    let itemList = this.state.kids.map(item => {
       return (
         <div className="col-sm-3 pb-5">
           <div
@@ -27,7 +43,7 @@ class KidsProd extends Component {
           >
             <div className="card-image ">
               <img
-                src={item.img}
+              src={require("../../assets/image/" + item.image)}
                 className="itemImg img-fluid"
                 alt={item.title}
               />
@@ -54,7 +70,7 @@ class KidsProd extends Component {
     });
 
     return (
-      <div className="">
+      <div className="kids-page">
         <div className="container">
         <h3 className="center">Enjoy your Shopping</h3>
           <div className="box row">{itemList}</div>
@@ -89,7 +105,8 @@ class KidsProd extends Component {
 }
 const mapStateToProps = state => {
   return {
-    kids: state.kids
+    // kids: state.kids
+    product: state.product
   };
 };
 const mapDispatchToProps = dispatch => {
@@ -97,7 +114,12 @@ const mapDispatchToProps = dispatch => {
     viewItem: id => {
       const data = { id, type: "kids" };
       dispatch(viewItem(data));
-    }
+    },
+    getKidsProductDis: data => {
+      console.log(data)
+      dispatch(getKidsProductDis(data));
+    },
+    getKidsProduct
     // showViews: bool => {
     //   dispatch(showViews(bool));
     // }

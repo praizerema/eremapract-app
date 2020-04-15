@@ -144,7 +144,6 @@ class Login extends React.Component {
                 onChange={this.handlePassword} value={password}/>
             </div>
                 <div className="text-center"> 
-                    {/* <button className="btn btn-login font-weight-bold mb-3" type="button" name="login" onclick="func()">Login</button> */}
                     <button
                 type="submit"
                 className="btn btn-login "

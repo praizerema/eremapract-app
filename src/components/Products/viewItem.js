@@ -16,72 +16,72 @@ class ViewItem extends Component {
       //  viewValue: false
     };
   }
-  
+
   handleClick = item => {
-    this.props.addToCart({...item,quantity:parseInt(this.state.qty)});
-    alert("Item added to cart please go to cart to proceed");
-    return;
+    this.props.addToCart({ ...item, quantity: parseInt(this.state.qty) });
+    console.log(this.props.addToCart);
   };
-  handleqty = e => this.setState({
+  handleqty = e =>
+    this.setState({
       qty: e.target.value
-    
     });
 
   render() {
     // Got this from pb remember
     return (
-   
-        <div className="row px-5 py-5 container">
-          <div className="col-sm-4">
-            <img
-              id="target"
-              className="viewImage"
-              src={this.props.viewValue.img}
-            />
-          </div>
-          <div className="col-sm-8">
-            <h3 className="title">
-              <b>{this.props.viewValue.title}</b>
-            </h3>
+      <div className="row px-5 py-5 container">
+        <div className="col-sm-4">
+          <img
+            id="target"
+            className="viewImage"
+            src={require("../../assets/image/" +
+              this.props.viewValue.image)}
+          />
+        </div>
+        <div className="col-sm-8">
+          <h3 className="title">
+            <b>{this.props.viewValue.name}</b>
+          </h3>
 
-            <div className="">
-              <h6>Desciption</h6>
-              <div>{this.props.viewValue.desc}</div>
-            </div>
-            <div className="">
-              <b>&#8358;{this.props.viewValue.price}</b>
-            </div>
-            <div className="mt-2">
-              <span>QTY:</span>
-              <select
-              onChange={this.handleqty} value={this.state.qty} required>
+          <div className="">
+            <h6>Desciption</h6>
+            <div>{this.props.viewValue.description}</div>
+          </div>
+          <div className="">
+            <b>&#8358;{this.props.viewValue.price}</b>
+          </div>
+          <div className="mt-2">
+            <span>QTY:</span>
+            <select onChange={this.handleqty} value={this.state.qty} required>
               {/* <option>Choose</option> */}
-                <option value= '1' selected>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-              </select>
-            </div>
-            <div>
-              <button className="btn btn-view mt-3"
-                onClick={() => {
-                  this.handleClick(this.props.viewValue)
-                }}
-              >
-                Add
-              </button>
-            </div>
+              <option value="1" selected>
+                1
+              </option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+            </select>
+          </div>
+          <div>
+            <button
+              className="btn btn-view mt-3"
+              onClick={() => {
+                this.handleClick(this.props.viewValue);
+              }}
+            >
+              Add
+            </button>
           </div>
         </div>
-   
+      </div>
     );
   }
 }

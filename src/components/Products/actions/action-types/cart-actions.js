@@ -6,3 +6,6 @@ export const SUB_QUANTITY = "SUB_QUANTITY";
 export const ADD_QUANTITY = "ADD_QUANTITY";
 export const ADD_SHIPPING = "ADD_SHIPPING";
 export const SHOW_VIEW = "SHOW_VIEW";
+export const MEN_PRODUCT = "MEN_PRODUCT";
+export const WOMEN_PRODUCT = "WOMEN_PRODUCT";
+export const KIDS_PRODUCT = "KIDS_PRODUCT";

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
+import firebase from "firebase";
+import { db } from "../Firebase/firebase"
 //import { addShipping } from './actions/cartActions'
 class AddMore extends Component{
 
-    componentWillUnmount() {
-            if(this.refs.shipping.checked)
-                this.props.substractShipping()
-    }
+    // componentWillUnmount() {
+    //         if(this.refs.shipping.checked)
+    //             this.props.substractShipping()
+    // }
     handleChecked = (e)=>{
         if(e.target.checked){
             this.props.addShipping();
@@ -16,12 +18,107 @@ class AddMore extends Component{
             this.props.substractShipping();
         }
     }
+    
+    handleClick=()=>{
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+        let guid = () => {
+            let s4 = () => {
+                return Math.floor((1 + Math.random()) * 0x10000)
+                    .toString(16)
+                    .substring(1); 
+            }
+            //return id of format 'aaaaaaaa'-'aaaa'-'aaaa'-'aaaa'-'aaaaaaaaaaaa'
+            return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+        }
+        var prod =this.props.addedItems.map(item=> {
+            return(
+                item.name,
+                item.quantity
+            )})
+        
+        console.log(guid());
+       let orderid = guid()
+        db.collection("order").doc(orderid)
+          .set({
+            uid: user.uid,
+              orderid: orderid,
+              orderdate: new Date(),
+           total:this.props.total
+          })
+          .then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
+          })
+          .catch(function(error) {
+            console.error("Error adding document: ", error);
+          });
+        console.log(db)
+        
+        db.collection("order items").doc()
+        .set({
+            orderid: orderid,
+            itemName: this.props.addedItems.map(item=> item.name),
+            itemQuantity: this.props.addedItems.map(item=> item.quantity),
+            itemCategory: this.props.addedItems.map(item=> item.category),
+            orderdate: new Date(),
+            uid: user.uid,
+            total:this.props.total
+            })
+            
+           
+       
+        .then(function(docRef) {
+          console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function(error) {
+          console.error("Error adding document: ", error);
+        })
+        
+        
+    //     db.collection("orderItems").doc(guid())
+    //     .set({
+    //       uid: user.uid,
+    //         orderid: guid(),
+    //         orderdate: new Date(),
+    //      total:this.props.total
+    //     })
+    //     .then(function(docRef) {
+    //       console.log("Document written with ID: ", docRef.id);
+    //     })
+    //     .catch(function(error) {
+    //       console.error("Error adding document: ", error);
+    //     });
+    //   console.log(db)
+    
+    }})
+    }
+    // componentDidMount() {
+    //     const db = !firebase.apps.length
+    //   ? firebase.initializeApp(config).firestore()
+    //   : firebase.app().firestore();
+    // db.collection("you")
+    //   .add({
+    //    cart: {product:this.props.addedItems, total:this.props.total}
+    //   })
+    //   .then(function(docRef) {
+    //     console.log("Document written with ID: ", docRef.id);
+    //   })
+    //   .catch(function(error) {
+    //     console.error("Error adding document: ", error);
+    //   });
+    // console.log(db)
+    // }
+    
 
     render(){
         
         return(
             <div className="container">
-                <div className="collection">
+                <div><b>Total: {this.props.total} &#8358;</b></div>
+                <div className="checkout"><button className="waves-effect waves-light btn-primary"  onClick={() => {
+                  this.handleClick()
+                }}> Checkout</button></div>
+                {/* <div className="collection">
                     <li className="collection-item">
                             <label>
                                 <input type="checkbox" ref="shipping" onChange= {this.handleChecked} />
@@ -31,8 +128,10 @@ class AddMore extends Component{
                         <li className="collection-item"><b>Total: {this.props.total} &#8358;</b></li>
                     </div>
                     <div className="checkout">
-                        <button className="waves-effect waves-light btn"> <Link to="/login">Checkout</Link> </button>
-                    </div>
+                        <button className="waves-effect waves-light btn-primary"  onClick={() => {
+                  this.handleClick()
+                }}> <Link to="">Checkout</Link> </button>
+                    </div> */}
                  </div>
         )
     }

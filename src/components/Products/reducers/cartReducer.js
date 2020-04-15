@@ -1,497 +1,162 @@
-import ProductAOne from "../../../assets/image/kidsclothesimg/images (2).jpeg";
-import ProductATwo from "../../../assets/image/kidsclothesimg/images (3).jpeg";
-import ProductAThree from "../../../assets/image/kidsclothesimg/images (1).jpeg";
-import ProductAFour from "../../../assets/image/kidsclothesimg/images (4).jpeg";
-import ProductAFive from "../../../assets/image/kidsclothesimg/images.jpeg";
-import ProductASix from "../../../assets/image/kidsclothesimg/kids-t-shirt-500x500.jpeg";
-import ProductASeven from "../../../assets/image/kidsclothesimg/s-l300.jpg";
-import ProductAEight from "../../../assets/image/kidsclothesimg/s-l500.jpg";
-import ProductANine from "../../../assets/image/kidsclothesimg/kids-wear02.jpg";
-import ProductATen from "../../../assets/image/kidsclothesimg/wholesale-children-clothing-sets-fall-girl-long.jpg_350x350.jpg";
-import ProductAEleven from "../../../assets/image/kidsclothesimg/designer-kids-wears-500x500.jpeg";
-import ProductATwelve from "../../../assets/image/kidsclothesimg/2018-Wholesale-Girls-Print-Windproof-Jacket-with-Detachable-Hood-Kids-Wears-Windproof-Parka.jpg";
-import productBOne from "../../../assets/image/FashionWomen/download (1).jpeg";
-import productBTwo from "../../../assets/image/FashionWomen/download (2).jpeg";
-import productBThree from "../../../assets/image/FashionWomen/download (3).jpeg";
-import productBFour from "../../../assets/image/FashionWomen/download (4).jpeg";
-import productBFive from "../../../assets/image/FashionWomen/download (5).jpeg";
-import productBSix from "../../../assets/image/FashionWomen/download (6).jpeg";
-import productBSeven from "../../../assets/image/FashionWomen/download (7).jpeg";
-import productBEight from "../../../assets/image/FashionWomen/download (8).jpeg";
-import ProductBNine from "../../../assets/image/FashionWomen/images (5).jpeg";
-import ProductBTen from "../../../assets/image/FashionWomen/images (6).jpeg";
-import ProductBEleven from "../../../assets/image/FashionWomen/images (7).jpeg";
-import productBTwelve from "../../../assets/image/FashionWomen/images (8).jpeg";
-import productBThirteen from "../../../assets/image/FashionWomen/images (9).jpeg";
-import productBFourteen from "../../../assets/image/FashionWomen/images (10).jpeg";
-import productBFifteeen from "../../../assets/image/FashionWomen/images (11).jpeg";
-import productBSixteen from "../../../assets/image/FashionWomen/images (12).jpeg";
-import productBSeventeen from "../../../assets/image/FashionWomen/images (13).jpeg";
-import productBEighteen from "../../../assets/image/FashionWomen/images (14).jpeg";
-import productBNineteen from "../../../assets/image/FashionWomen/images (15).jpeg";
-import productBTwenty from "../../../assets/image/FashionWomen/images (16).jpeg";
-import MenOne from "../../../assets/image/fashionMen/men1.jpg";
-import MenTwo from "../../../assets/image/fashionMen/men2.jpeg";
-import MenThree from "../../../assets/image/fashionMen/men3.jpg";
-import MenFour from "../../../assets/image/fashionMen/men4.jpeg";
-import MenFive from "../../../assets/image/fashionMen/men5.jpeg";
-import MenSix from "../../../assets/image/fashionMen/men6.jpeg";
-import MenSeven from "../../../assets/image/fashionMen/men7.jpeg";
-import MenEight from "../../../assets/image/fashionMen/men8.jpeg";
-import MenNine from "../../../assets/image/fashionMen/sandalmen.jpeg";
-import MenTen from "../../../assets/image/fashionMen/sandalmen2.jpeg";
-import MenEleven from "../../../assets/image/fashionMen/sandalunisex.jpeg";
-import MenTwelve from "../../../assets/image/fashionMen/sandalunisex1.jpeg";
-import MenThirteen from "../../../assets/image/fashionMen/sandalunisex2.jpeg";
-import MenFourteen from "../../../assets/image/fashionMen/sneakersmen1.jpeg";
-import MenFifteen from "../../../assets/image/fashionMen/sneakersmen2.jpeg";
-import MenSixteen from "../../../assets/image/fashionMen/sneakersmen3.jpeg";
-import MenSeventeen from "../../../assets/image/fashionMen/sneakersunisex.jpeg";
-import MenEighteen from "../../../assets/image/fashionMen/topunisex.jpeg";
-import MenNineteen from "../../../assets/image/fashionMen/topunisex1.jpeg";
-import MenTwenty from "../../../assets/image/fashionMen/topunisex2.jpeg";
 import {
   ADD_TO_CART,
   REMOVE_ITEM,
   VIEW_ITEM,
   SUB_QUANTITY,
   ADD_QUANTITY,
-  SHOW_VIEW
+  SHOW_VIEW,
+  MEN_PRODUCT,
+  WOMEN_PRODUCT,
+  KIDS_PRODUCT
 } from "../actions/action-types/cart-actions";
-import cart from "../cart";
-
+import { ProductsAll } from "../data/products";
+import { db } from "../../Firebase/firebase";
 const initState = {
-  //womn
-  kids: [
-    {
-      id: "1",
-      title: "kids(top & bottom)",
-      desc:
-        "Childeren within the the age bracket of four and five years old should wear this",
-      price: 2500,
-      img: ProductAOne
-    },
-    {
-      id: "2",
-      title: "Babies(top & bottom)",
-      desc: "These are very good design and fabric for babies",
-      price: 5500,
-      img: ProductATwo
-    },
-    {
-      id: "3",
-      title: "Baby wear",
-      desc: "Ideal for babies. Good fabric",
-      price: 2900,
-      img: ProductAThree
-    },
-    {
-      id: "4",
-      title: "top & bottom",
-      desc: "Good product, great pricee",
-      price: 3300,
-      img: ProductAFour
-    },
-    {
-      id: "5",
-      title: "Pleated gown",
-      desc: "These are for your female childeren between four and five",
-      price: 2800,
-      img: ProductAFive
-    },
-    {
-      id: "6",
-      title: "kids(Shirt & Shorts)",
-      desc: "Unisex for kids between four and five",
-      price: 2600,
-      img: ProductASix
-    },
-    {
-      id: "7",
-      title: "Fitted Teens gown",
-      desc: "Elastic for girls between thirteen and fifteen",
-      price: 2000,
-      img: ProductASeven
-    },
-    {
-      id: "8",
-      title: "Peplum gowns",
-      desc: "Nice and free not suitable for kids above Ten",
-      price: 3000,
-      img: ProductAEight
-    },
-    {
-      id: "9",
-      title: "Baloon gowns",
-      desc: "Nice for the season Age bracket ten and Twelve",
-      price: 3500,
-      img: ProductANine
-    },
-    {
-      id: "10",
-      title: "babies(complete)",
-      desc:
-        "Childeren within the the age bracket of three and four years old should wear this",
-      price: 1500,
-      img: ProductATen
-    },
-    {
-      id: "11",
-      title: "kids(top & pant)",
-      desc:
-        "Childeren within the the age bracket of two and three years old should wear this",
-      price: 4500,
-      img: ProductAEleven
-    },
-    {
-      id: "12",
-      title: "Jacket",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: ProductATwelve
-    }
-  ],
-
-  women: [
-    {
-      id: "1",
-      title: "Top & Skirt(2pcs)",
-      desc:
-        "This is made out o high quality fabrics and made by the best Fashion Stylists in town",
-      price: 6000,
-      img: productBOne,
-    },
-    {
-      id: "2",
-      title: "Combination",
-      desc: "These are combinations of Top and pants and also gowns. They are of very high quality and bright colors",
-      price: 2500,
-      img: productBTwo
-    },
-    {
-      id: "3",
-      title: "Pencil Gown",
-      desc: "This is made out of good quality material ",
-      price: 4500,
-      img: productBThree
-    },
-    {
-      id: "4",
-      title: "Pencil Gown",
-      desc: "Good product, made out of a nice polyester material",
-      price: 3300,
-      img: productBFour
-    },
-    {
-      id: "5",
-      title: "Sneakers",
-      desc: "This product is durable and made out of the best materials",
-      price: 7000,
-      img: productBFive
-    },
-    {
-      id: "6",
-      title: "Flat shoes",
-      desc: "Made out of velvet material",
-      price: 3000,
-      img: productBSix
-    },
-    {
-      id: "7",
-      title: "Flat shoes",
-      desc: "Made out of quality clothing material",
-      price: 2500,
-      img: productBSeven
-    },
-    {
-      id: "8",
-      title: "Flat shoes",
-      desc: "Made out of quality leather material",
-      price: 4000,
-      img: productBEight
-    },
-    {
-      id: "9",
-      title: "Top",
-      desc: "Nice causual top for hot weather",
-      price: 3500,
-      img: ProductBNine
-    },
-    {
-      id: "10",
-      title: "Gown",
-      desc:
-        "Childeren within the the age bracket of three and four years old should wear this",
-      price: 5500,
-      img: ProductBTen
-    },
-    {
-      id: "11",
-      title: "Gown",
-      desc:
-        "Childeren within the the age bracket of two and three years old should wear this",
-      price: 4500,
-      img: ProductBEleven
-    },
-    {
-      id: "12",
-      title: "Multi-Designs",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: productBTwelve
-    },
-    {
-      id: "13",
-      title: "Office Gowns",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: productBThirteen
-    },
-    {
-      id: "14",
-      title: "Wrap Top",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: productBFourteen
-    },
-    {
-      id: "15",
-      title: "Jean Pants",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: productBFifteeen
-    },
-    {
-      id: "16",
-      title: "Office Gown (Black)",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: productBSixteen
-    },
-    {
-      id: "17",
-      title: "Office Gown (Red)",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: productBSeventeen
-    },
-    {
-      id: "18",
-      title: "Dinner Gown",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: productBEighteen
-    },
-    {
-      id: "19",
-      title: "Dinner Gown",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: productBNineteen
-    },
-    {
-      id: "20",
-      title: "Causual Top",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: productBTwenty
-    }
-  ],
-  men: [
-    {
-      id: "1",
-      title: "Jacket",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenOne
-    },
-    {
-      id: "2",
-      title: "Suit",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenTwo
-    },
-    {
-      id: "3",
-      title: "Jacket",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenThree
-    },
-    {
-      id: "4",
-      title: "Jacket",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenFour
-    },
-    {
-      id: "5",
-      title: "Traditional Attire",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenFive
-    },
-    {
-      id: "6",
-      title: "Office Shirt",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenSix
-    },
-    {
-      id: "7",
-      title: "Office Shirt",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenSeven
-    },
-    {
-      id: "8",
-      title: "Jacket",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenEight
-    },
-    {
-      id: "9",
-      title: "Sandals",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenNine
-    },
-    {
-      id: "10",
-      title: "Sandals",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenTen
-    },
-    {
-      id: "11",
-      title: "Sandals",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenEleven
-    },
-    {
-      id: "12",
-      title: "Sandals",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenTwelve
-    },
-    {
-      id: "13",
-      title: "Sandals",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenThirteen
-    },
-    {
-      id: "14",
-      title: "Sneakers",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenFourteen
-    },
-    {
-      id: "15",
-      title: "Sneakers",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenFifteen
-    },
-    {
-      id: "16",
-      title: "Sneakers",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenSixteen
-    },
-    {
-      id: "17",
-      title: "Sneakers",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenSeventeen
-    },
-    {
-      id: "18",
-      title: "Shirts",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenEighteen
-    },
-    {
-      id: "19",
-      title: "Shirts",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenNineteen
-    },
-    {
-      id: "20",
-      title: "Shirts",
-      desc: "Available in all sizes and colors",
-      price: 7500,
-      img: MenTwenty
-    }
-  ],
+  product: [],
   addedItems: [],
   total: 0
 
   //   showView: false,
   //   viewValue: {}
 };
-// console.log(state.allprod)
+
+// export const getMenProduct = data => {
+
+// };
+// export const getProducts = db => {
+//   return new Promise((resolve, reject) => {
+//     db.collection("products")
+//       .get()
+//       .then(querySnapshot => {
+//         let products = [];
+//         querySnapshot.forEach(doc => {
+//           let prod = {
+//             id: doc.id,
+//             name: doc.data().name,
+//             price: doc.data().price,
+//             cat: doc.data().category
+//             // stock: doc.data().stock
+//           };
+//           products.push(prod);
+//           // console.log(products)
+//           if (prod.category == "women") {
+//             initState.kids.push(prod);
+//             console.log(prod);
+//           }
+//         });
+
+//         resolve(products);
+//       })
+
+//       .catch(error => reject(error));
+//   });
+// };
+
+// export const createProducts = (db, products) => {
+//   //Create promises array
+//   let listPromises = products.map((prod, index) => {
+//     return createProduct(db, prod);
+//   });
+
+//   return Promise.all(listPromises);
+// };
+
+/* Create product */
+// export const createProduct = (db, item) => {
+//   return db
+//     .collection("products")
+//     .doc()
+//     .set({
+//       id: item.id,
+//       name: item.title,
+//       description: item.desc,
+//       price: item.price,
+//       image: item.img,
+//       Quantity: item.qty,
+//       category: item.catId
+//     });
+// };
+// createProducts(db, ProductsAll)
+//   .then(() => this.setState({ product: ProductsAll }))
+//   .catch(error => console.error(error));
+
+
+
 const cartReducer = (state = initState, action) => {
   //INSIDE HOME COMPONENT
   //view
 
-  if (action.type === VIEW_ITEM) {
-    const data = action.data || {};
-    let addedItem =
-      data.type === "women"
-        ? state.women.find(item => item.id === data.id)
-        : data.type === "kids"
-        ? state.kids.find(item => item.id === data.id)
-        : data.type === "men"
-        ? state.men.find(item => item.id === data.id)
-        : {};
+  if (action.type === MEN_PRODUCT) {
 
     return {
       ...state,
-      viewValue: { ...addedItem, cart: data.type }
-      //   showView: true
+      men_product: action.item
+    };
+  }
+  if (action.type === WOMEN_PRODUCT) {
+    console.log(action.item)
+    return {
+      ...state,
+      women_product: action.item
+    };
+  }
+  if (action.type === KIDS_PRODUCT) {
+    console.log(action.item)
+    return {
+      ...state,
+      kids_product: action.item
     };
   }
 
+  if (action.type === VIEW_ITEM) {
+    console.log(initState.product)
+    const data = action.data || {};
+    console.log(state.kids_product)
+    console.log(state);
+    console.log(data.type);
+    let addedItem =
+      data.type === "women"
+        ? state.women_product.find(item => item.id === data.id)
+        : data.type === "kids"
+        ? state.kids_product.find(item => item.id === data.id)
+        : data.type === "men"
+        ? state.men_product.find(item => item.id === data.id)
+        : {};
+       
+    return {
+      ...state,
+      viewValue: { ...addedItem},
+
+      //   showView: true
+    };
+   
+  }
   if (action.type === SHOW_VIEW) {
     return {
       ...state,
-      viewValue: {},
+      viewValue: {}
     };
   }
 
   if (action.type === ADD_TO_CART) {
+    console.log(action.item)
+    // console.log(addedItems)
+
     let addedItem = action.item;
-    let rqty= addedItem.quantity
+    let rqty = addedItem.quantity;
     //check if the action id exists in the addedItems
     let existed_item = state.addedItems.find(
       item => addedItem.id === item.id && addedItem.cart === item.cart
     );
     if (existed_item) {
-      existed_item.quantity= existed_item.quantity + rqty
+      existed_item.quantity = existed_item.quantity + rqty;
       return {
         ...state,
-        total: state.total +  (addedItem.price * addedItem.quantity)
-    } 
-  }
-    else {
+        total: state.total + addedItem.price * addedItem.quantity
+      };
+    } else {
       //calculating the total
-      let newTotal = state.total + (addedItem.price * addedItem.quantity);
+      let newTotal = state.total + addedItem.price * addedItem.quantity;
       return {
         ...state,
         addedItems: [...state.addedItems, addedItem],
@@ -500,16 +165,16 @@ const cartReducer = (state = initState, action) => {
     }
   }
 
-
   if (action.type === REMOVE_ITEM) {
     let data = action.item;
     let itemToRemove = state.addedItems.find(
       item => data.id === item.id && data.cart === item.cart
     );
-    console.log(data.cart)
-    
+    console.log(data.cart);
 
-       let new_items = state.addedItems.filter(item => !(data.id === item.id && data.cart === item.cart));
+    let new_items = state.addedItems.filter(
+      item => !(data.id === item.id && data.cart === item.cart)
+    );
 
     //calculating the total
     let newTotal = state.total - itemToRemove.price * itemToRemove.quantity;
@@ -519,8 +184,6 @@ const cartReducer = (state = initState, action) => {
       total: newTotal
     };
   }
-
-
 
   //INSIDE CART COMPONENT
   if (action.type === ADD_QUANTITY) {
@@ -536,8 +199,6 @@ const cartReducer = (state = initState, action) => {
     };
   }
 
-
-
   if (action.type === SUB_QUANTITY) {
     let data = action.item;
     let addedItem = state.addedItems.find(
@@ -545,7 +206,9 @@ const cartReducer = (state = initState, action) => {
     );
     //if the qt == 0 then it should be removed
     if (addedItem.quantity === 1) {
-      let new_items = state.addedItems.filter(item => data.id === item.id && data.cart !== item.cart);
+      let new_items = state.addedItems.filter(
+        item => !(data.id === item.id && data.cart === item.cart)
+      );
       let newTotal = state.total - addedItem.price;
       return {
         ...state,

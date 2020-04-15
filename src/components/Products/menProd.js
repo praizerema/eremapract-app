@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ViewItem from "../Products/viewItem";
-import { viewItem } from "./actions/cartActions";
-import { withAuthorization } from '../Session';
+import ViewItem from "./viewItem";
+import {
+  viewItem,
+  getMenProduct,
+  getMenProductDis
+} from "./actions/cartActions";
+import { withAuthorization } from "../Session";
+import { db } from "../Firebase/firebase";
+// import cart from "../cart";
 
 // import { addToCart } from './actions/cartActions';
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,8 +17,9 @@ class Men extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        showview: true,
-      viewValue: {}
+      showview: true,
+      viewValue: {},
+      men: []
     };
   }
   handleView = id => {
@@ -20,17 +27,21 @@ class Men extends Component {
     this.setState({ showView: true });
   };
 
+  UNSAFE_componentWillMount() {
+    this.props.getMenProduct().then(data => {
+      this.setState({ men: data });
+      this.props.getMenProductDis(data);
+    });
+  }
+
   render() {
-    let itemList = this.props.men.map(item => {
+    let itemList = this.state.men.map(item => {
       return (
         <div className=" col-sm-3 pb-5">
-          <div
-            className="card"
-            key={item.id}
-          >
+          <div className="card" key={item.id}>
             <div className="card-image">
               <img
-                src={item.img}
+                src={require("../../assets/image/" + item.image)}
                 className="itemImg img-fluid"
                 alt={item.title}
               />
@@ -49,7 +60,6 @@ class Men extends Component {
                 }}
               >
                 View
-
               </button>
             </div>
           </div>
@@ -58,34 +68,25 @@ class Men extends Component {
     });
 
     return (
-      <div className="">
-      <div className="container">
-
-        <h3 className="center">Enjoy your Shopping</h3>
-        <div className="box row">{itemList}</div>
-        {this.state.showView && (
-          <div
-            className="card container mt-5"
-            style={{
-                position: "fixed",
-              top: "10px",
-              width: "100vw",
-  height: "100vh",
-  backgroundColor: "rgba(0, 0, 0, 0.7)",
-              zIndex: "200",
-              alignSelf: "center"
-            }}
-          >
-          <div className="viewBody">
-                  <span
-                className="close text-right"
-                onClick={e => this.setState({ showView: false })}
-              >
-                &#10005;
-              </span> 
-              <ViewItem />
+      <div className="men-page">
+        <div className="container">
+          <h3 className="center">Enjoy your Shopping</h3>
+          <div className="box row">{itemList}</div>
+          {this.state.showView && (
+            <div
+              className="card container mt-5 px-0 mx-0 showView"
+              
+            >
+              <div className="viewBody">
+                <span
+                  className="close text-right"
+                  onClick={e => this.setState({ showView: false })}
+                >
+                  &#10005;
+                </span>
+                <ViewItem />
               </div>
-            {/* <span
+              {/* <span
               className="close"
               onClick={e => this.setState({ showView: false })}
             >
@@ -94,27 +95,44 @@ class Men extends Component {
             {this.props.viewValue.desc}
             <h1>{this.props.viewValue.title}</h1>
             <img src={this.props.viewValue.img} alt=""/> */}
-          </div>
-        )}
-      </div>
+            </div>
+          )}
+        </div>
       </div>
     );
   }
 }
+
 const mapStateToProps = state => {
+  // console.log(state.product)
+
   return {
-    men: state.men
+    // men: state.men,
+    product: state.product
+    
   };
+  
 };
+
 const mapDispatchToProps = dispatch => {
   return {
     viewItem: id => {
       const data = { id, type: "men" };
       dispatch(viewItem(data));
-    }
+    },
+    getMenProductDis: data => {
+      dispatch(getMenProductDis(data));
+    },
+    getMenProduct
+    // getMenProduct: id => {
+    //   dispatch(getMenProduct);
+    // }
+
     // showViews: bool => {
     //   dispatch(showViews(bool));
     // }
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(Men);
+// /static/media/sandalunisex.d74e1268.jpeg

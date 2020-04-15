@@ -14,7 +14,7 @@ import womenProd from './components/Products/womenProd';
 import kidsProd from './components/Products/kidsProd';
 import Detail from './components/Products/detail';
 import Cart from './components/Products/cart';
-import Men from './components/Products/men';
+import Men from './components/Products/menProd';
 import AllProd from './components/Products/allProd';
 import NavBar from './components/Products/navBar'
 import TopHeader from './components/TopNav/topNav';

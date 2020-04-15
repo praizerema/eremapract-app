@@ -1,7 +1,7 @@
-import app from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
-
+import app from "firebase/app";
+import "firebase/auth";
+import "firebase/database";
+import firebase from "firebase";
 
 export const config = {
   apiKey: "AIzaSyBjxu8fvzv-g7_o_uOigYRwhBvxBt3Q14Q",
@@ -23,61 +23,58 @@ export const config = {
 
 class Firebase {
   constructor() {
-    app.initializeApp(config);
+    // app.initializeApp(config);
 
     this.auth = app.auth();
-    this.db = app.database();
+    // this.db = app.database();
   }
-    // *** Auth API ***
+  // *** Auth API ***
 
-    doCreateUserWithEmailAndPassword = (email, password) =>
+  doCreateUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 
-    doSignInWithEmailAndPassword = (email, password) =>
+  doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
-    doSignOut = () => this.auth.signOut();
+  doSignOut = () => this.auth.signOut();
 
-    doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
+  doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
 
-  doPasswordUpdate = password =>
-    this.auth.currentUser.updatePassword(password);
+  doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
 
-    onAuthUserListener = (next, fallback) =>
-    this.auth.onAuthStateChanged(authUser => {
-      if (authUser) {
-        this.user(authUser.uid)
-          .once('value')
-          .then(snapshot => {
-            const dbUser = snapshot.val();
-console.log(this.user)
-console.log("user")
+  //     onAuthUserListener = (next, fallback) =>
+  //     this.auth.onAuthStateChanged(authUser => {
+  //       if (authUser) {
+  //         this.user(authUser.uid)
+  //           .once('value')
+  //           .then(snapshot => {
+  //             const dbUser = snapshot.val();
+  // console.log(dbUser)
+  //             // default empty roles
+  //             if (!dbUser.roles) {
+  //               dbUser.roles = {};
+  //             }
 
-            // default empty roles
-            // if (!dbUser.roles) {
-            //   dbUser.roles = {};
-            // }
+  //             // merge auth and db user
+  //             authUser = {
+  //               uid: authUser.uid,
+  //               email: authUser.email,
+  //               emailVerified: authUser.emailVerified,
+  //               providerData: authUser.providerData,
+  //               ...dbUser,
+  //             };
 
-            // merge auth and db user
-            authUser = {
-              uid: authUser.uid,
-              email: authUser.email,
-              // emailVerified: authUser.emailVerified,
-              providerData: authUser.providerData,
-              ...dbUser,
-            };
-            console.log(authUser)
-            next(authUser);
-          });
-      } else {
-        fallback();
-      }
-    });
-
+  //             next(authUser);
+  //           });
+  //       } else {
+  //         fallback();
+  //       }
+  //     });
   // *** User API ***
 
   user = uid => this.db.ref(`users/${uid}`);
-  users = () => this.db.ref('users');
-
+  users = () => this.db.ref("users");
 }
-
+export const db = !firebase.apps.length
+  ? firebase.initializeApp(config).firestore()
+  : firebase.app().firestore();
 export default Firebase;

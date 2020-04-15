@@ -8,6 +8,8 @@ import NotificationManager from "./utils/notifications";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import PasswordInput from "./password/passwordInput";
+import firebase from "firebase";
+import { db } from "./Firebase/firebase";
 const SignUpPage = () => (
   <div>
     <SignUpForm />
@@ -142,25 +144,32 @@ class Signup extends React.Component {
               this.setState({ process: false });
               }
                 else {
-                  const { first_name, last_name, email, password } = this.state;
-
+                  const { first_name, last_name, email, password, phone} = this.state;
+                  var user = firebase.auth().currentUser;
                   this.props.firebase
                     .doCreateUserWithEmailAndPassword(email, password)
                     .then(authUser => {
                       // Create a user in your Firebase realtime database
-                     return this.props.firebase
-                        .user(authUser.user.uid)
-                        .set({
-                          first_name,
-                          last_name,
-                          email,
-                        });
-                      // this.setState({ ...INITIAL_STATE });
-                      // this.props.history.push(ROUTES.HOME);
-                    })
-                    .then(() => {
+                    //  return this.props.firebase
+                    //     .user(authUser.user.uid)
+                    //     .set({
+                    //       first_name,
+                    //       last_name,
+                    //       email,
+                    //     });
+                    //   // this.setState({ ...INITIAL_STATE });
+                    //   // this.props.history.push(ROUTES.HOME);
+                    // })
+                    // .then(() => {
                       this.setState({ ...INITIAL_STATE });
                       this.props.history.push(ROUTES.HOME);
+                      //  return this.props.firebase
+                      //   .user(authUser.user.uid)
+                      //   .set({
+                      //     first_name,
+                      //     last_name,
+                      //     email,
+                      //   });
                     })
                     .catch(error1 => {
                       this.NotificationPrompt(
@@ -172,6 +181,37 @@ class Signup extends React.Component {
                       //this.setState({ error1});
                       
                     });
+                    firebase.auth().onAuthStateChanged((user) => {
+                      if (user) {
+                        // User logged in already or has just logged in.
+                        db.collection("users")
+                        .doc(user.uid)
+                          .set({
+                            user:{ 
+                          uid: user.uid,
+                         firstname: first_name,
+                         lastname: last_name,
+                         email: email,
+                         phoneno:phone,
+                          }
+                          })
+                          //    .then(function(docRef) {
+                          //        docRef.id= user.uid
+                          //   console.log("Document written with ID: ", docRef.id);
+                          // })
+                        console.log(user.uid);
+                      } 
+                    });
+                    
+                          
+                        
+                        //   .then(function(docRef) {
+                        //     console.log("Document written with ID: ", docRef.id);
+                        //   })
+                        //   .catch(function(error) {
+                        //     console.error("Error adding document: ", error);
+                        //   });
+                        // console.log(db)
                     setTimeout(() => {
                       if (this.state.process) {
                         this.NotificationPrompt(

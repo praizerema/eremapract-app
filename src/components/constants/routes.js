@@ -1,6 +1,6 @@
-export const  SIGNIN= '/';
+export const  HOME= '/';
+export const  SIGNIN= '/signin';
 export const SIGNUP = '/signup';
-export const  HOME= '/home';
 export const WOMEN= '/women';
 export const MEN = '/men';
 export const KIDS = '/kids';
