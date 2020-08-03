@@ -20,6 +20,8 @@ class ViewItem extends Component {
   handleClick = item => {
     this.props.addToCart({ ...item, quantity: parseInt(this.state.qty) });
     console.log(this.props.addToCart);
+    this.setState({ showView: false });
+    
   };
   handleqty = e =>
     this.setState({
@@ -27,9 +29,9 @@ class ViewItem extends Component {
     });
 
   render() {
-    // Got this from pb remember
+    // Got this from pb remembe
     return (
-      <div className="row px-5 py-5 container">
+      <div className="row px-5 py-5 container-fluid ">
         <div className="col-sm-4">
           <img
             id="target"
@@ -86,6 +88,7 @@ class ViewItem extends Component {
   }
 }
 const mapStateToProps = state => {
+  console.log(state.viewValue)
   return {
     viewValue: state.viewValue
   };

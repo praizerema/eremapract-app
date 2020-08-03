@@ -17,8 +17,8 @@ class Men extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showview: true,
-      viewValue: {},
+      // showview: true,
+      // viewValue: {},
       men: []
     };
   }
@@ -50,11 +50,10 @@ class Men extends Component {
             <div className="card-content px-2 mt-1">
               {/* <p>{item.desc}</p> */}
               <span className="mr-3">
-                <b>Price: {item.price}&#8358;</b>
+                <b>&#8358;{item.price}</b>
               </span>
               <button
-                to="/"
-                className="btn btn-floating btn-small btn-view  px-5 pl-5"
+                className="btn btn-floating btn-small btn-view  px-5 mt-1 pl-5"
                 onClick={() => {
                   this.handleView(item.id);
                 }}
@@ -69,12 +68,12 @@ class Men extends Component {
 
     return (
       <div className="men-page">
-        <div className="container">
+        <div className="container-fluid px-5 text-center">
           <h3 className="center">Enjoy your Shopping</h3>
           <div className="box row">{itemList}</div>
           {this.state.showView && (
             <div
-              className="card container mt-5 px-0 mx-0 showView"
+              className="card  mt-5 px-0 mx-0 showView "
               
             >
               <div className="viewBody">
@@ -104,11 +103,11 @@ class Men extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state.product)
+  console.log(state.men_product)
 
   return {
     // men: state.men,
-    product: state.product
+    // product: state.product
     
   };
   

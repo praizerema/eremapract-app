@@ -101,6 +101,6 @@ const mapDispatchToProps = (dispatch)=>{
         subtractQuantity: (item)=>{dispatch(subtractQuantity(item))}
     }
 }
-const condition = authUser => !!authUser; 
+const condition = authUser => !authUser; 
 export default withAuthorization(condition) (connect(mapStateToProps,mapDispatchToProps)(Cart))
 

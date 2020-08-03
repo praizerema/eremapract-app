@@ -10,6 +10,9 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import PasswordInput from "./password/passwordInput";
 import firebase from "firebase";
 import { db } from "./Firebase/firebase";
+import LOGOImg from "../assets/image/Group 1 (1).png";
+import Footer from "./footer";
+
 const SignUpPage = () => (
   <div>
     <SignUpForm />
@@ -234,11 +237,21 @@ class Signup extends React.Component {
       phone,
     } = this.state;
     return (
-      <div className="">
-        <div className="signupwrapper container">
+      <div className=" pt-5">
+        <div className="signupwrapper mt-5">
           <div className="signupPage">
+          <div className="loginHead text-muted text-center"> 
+             <a href="/">
+             <img src={LOGOImg} style={{ width: "10%", height: "10%" }} />
+             </a> 
+              </div>
           {/* {error1 && <div className="errdiv"><span className="float-right pb-4" onClick={e => this.setState({ error1: false })}>X</span><div className="text-center">{error1.message}</div> </div>}  */}
-            <h2 clclassNameass="signupHead">Signup</h2>
+           <div className="text-center mb-4">
+           <h4 clclassNameass="signupHead">Welcome</h4>
+            <h5 clclassNameass="signupHead">Create Account</h5>
+           </div>
+           
+
             <NotificationManager msg={this.state.error} />
 
             <form
@@ -259,7 +272,7 @@ class Signup extends React.Component {
               }}
             
               >
-              <div className="col-6">
+              <div className="col-6 pr-2">
                 <div className="form-group">
                   <label for="firstname">Firstname</label>
                   <input
@@ -267,13 +280,13 @@ class Signup extends React.Component {
                     name="first_name"
                     id="firstname"
                     type="text"
-                    placeholder="Firstname"
+                    placeholder=""
                    onChange= {this.firstnameHandler}
                    value= {first_name}
                   />
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-6 pl-2">
                 <div className="form-group">
                   <label for="lastname">Lastname</label>
                   <input
@@ -281,13 +294,13 @@ class Signup extends React.Component {
                     name="last_name"
                     id="lastname"
                     type="text"
-                    placeholder="Lastname"
+                    placeholder=""
                     onChange= {this.lastnameHandler}
                     value= {last_name}
                   />
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-6 pr-2">
                 <div className="form-group">
                   <label for="email">Email</label>
                   <input
@@ -295,13 +308,13 @@ class Signup extends React.Component {
                     name="email"
                     id="email"
                     type="text"
-                    placeholder="Email"
+                    placeholder=""
                     onChange= {this.emailHandler}
                     value= {email}
                   />
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-6 pl-2">
                 <div className="form-group">
                   <label for="phone">Phone Number</label>
                   <input
@@ -309,7 +322,7 @@ class Signup extends React.Component {
                     name="phone"
                     id="phoneno"
                     type="text"
-                    placeholder="Phone Number"
+                    placeholder=""
                     maxLength={20}
                     onChange= {this.phonenoHandler}
                     value= {phone}
@@ -322,7 +335,7 @@ class Signup extends React.Component {
                 <PasswordInput
                   type="password"
                   className="form-control"
-                  placeholder="Enter your password"
+                  placeholder=""
                   onChange= {this.passwordHandler}
                   value= {password}
                 />
@@ -345,14 +358,13 @@ class Signup extends React.Component {
                   name="confirm_password"
                   id="confirm_password"
                   type="password"
-                  placeholder="Confirm password"
+                  placeholder=""
                   onChange= {this.cpasswordHandler}
                   value= {confirm_password}
                 />
               </div>
-              <p className="col-12">
-                By clicking join you agree to erema's
-                <Link className="black" to="#">terms of agreement</Link>.
+              <p className="col-12 font-10 text-right" >
+                <Link className="black" to="#">Terms of Agreement</Link>.
               </p>
               <div className="col-12">
                
@@ -369,13 +381,13 @@ class Signup extends React.Component {
               </button>
               </div>
 
-              <p className="col-12">
-                Already on erema? <Link className="black" to="/login">Signin</Link>
+              <p className="col-12 font-10">
+                Already have an account? <Link className="black" to="/signin">Signin</Link>
               </p>
             </form>
           </div>
         </div>
-        <footer className="copyr"> copyright @Erema 2019 </footer>
+    <Footer />
       </div>
     );
   }

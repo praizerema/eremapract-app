@@ -116,11 +116,18 @@ class Login extends React.Component {
       const { email, password, error1 } = this.state;
       // console.log(email)
     return (
-      <div className="container-fluid">
-        <div className="loginPage p-4">
-            <div className="loginHead text-muted"> 
-              <img src={LOGOImg} style={{ width: "10%", height: "10%" }} />
+      <div className="pt-5">
+      <div className="signupwrapper mt-5">
+        <div className="loginPage">
+        <div className="loginHead text-muted text-center"> 
+             <a href="/">
+             <img src={LOGOImg} style={{ width: "10%", height: "10%" }} />
+             </a> 
               </div>
+              <div className="text-center mb-4">
+            <h6 clclassNameass="signupHead">Login to your account</h6>
+           </div>
+              
             <NotificationManager msg={this.state.error} />
             {/* {error1 && <div className="errdiv"><span className="float-right pb-4" onClick={e => this.setState({ error1: false })}>X</span><div className="text-center">{error1.message}</div> </div>} */}
             <form onSubmit={e => {
@@ -135,12 +142,12 @@ class Login extends React.Component {
               >
                 <div className="form-group">
                     <label for='email'>Email</label>
-                <input className="form-control" name='email' id='email' type="text" placeholder="Email"
+                <input className="form-control" name='email' id='email' type="text" placeholder=""
                   onChange={this.handleEmail} value={email}/>
                 </div>
                 <div className="form-group"> 
                     <label for='password'>Password</label>
-                <input className="form-control" name='password' id='password' type="password" placeholder="password" 
+                <input className="form-control" name='password' id='password' type="password" placeholder="" 
                 onChange={this.handlePassword} value={password}/>
             </div>
                 <div className="text-center"> 
@@ -158,16 +165,17 @@ class Login extends React.Component {
                 </div>
                
             </form>
-            <p>
-    Not on erema? <Link className="black" to="/signup">signup
+            <p className="font-10 mt-3">
+    <Link className="black" to="/signup"> Do not have an account? Signup
  </Link>
 </p>
-<p>
-        Forgot Password? Click <Link className="black" to="/forgotpassword">forgot_password
+<p className="font-10">
+        <Link className="black" to="/forgotpassword">Forgot Password?
      </Link>
     </p>
         </div>
-        <div className=""><Footer/></div>
+        </div>
+        <Footer className="font-10"/>
     </div>
     );
   }

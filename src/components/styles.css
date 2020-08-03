@@ -9,24 +9,32 @@ body {
   line-height: 1.4;
 }
 .form-control {
-  height: 40px !important;
+  height: 45px !important;
   border-radius: 4px;
+  border: 1px solid #B8D6F2 !important;
+  font-size: 12px !important
+}
+::placeholder {
+  color: rgb(200, 200, 198, 1) !important;
+  font-size: 0.8em;
+  font-weight: 200;
 }
 .loginPage {
-  width: 350px;
-  max-height: 100vh;
-  background-color: #efefef;
+  width: 380px !important;
+  /* max-height: 100vh; */
+  vertical-align: middle !important;
   margin: auto;
-  margin-top: 120px;
+  /* margin-top: 120px; */
   border-radius: 2px;
-  box-shadow: 5px 6px 5px 6px #bdbbbb;
+  /* box-shadow: 5px 6px 5px 6px #bdbbbb; */
   text-align: left;
+  margin-top: 20vh !important;
+
 }
 .btn-login {
   width: 100%;
-  background-color: #1773db !important;
+  background-color: rgb(13, 117, 168) !important;
   height: 45px;
-  /* width: 100px; */
   border-radius: 4px;
   color: #fff !important;
 }
@@ -54,13 +62,13 @@ button:hover {
   display: none;
 }
 .signupPage {
-  width: 350px;
-  background-color: #efefef;
+  width: 380px;
+  /* background-color: #ffffff; */
   padding: 10px;
   margin: auto;
-  margin-top: 5vh;
+  margin-top: 5vh !important;
   border-radius: 2px;
-  box-shadow: 5px 10px 5px 10px #888888;
+  /* box-shadow: 5px 10px 5px 10px #888888; */
   text-align: left;
 }
 .homeHead {
@@ -306,7 +314,7 @@ a{
 }
 .img-put{
   background-image: url (var (--homeCardImage) );
-  height: 100%;
+  height: 60vh !important;
   text-align: center; 
   vertical-align: middle;
   padding-top: 100;
@@ -318,11 +326,14 @@ a{
 }
 .footerWrap{
   background-color: #f5f5f5;
+  position: fixed;
+  bottom: 0px !important;
 }
 .showView{
   position: fixed !important;
                 top: 10px !important;
-                width: 100% !important;
+                right: 0px;
+                /* width: 93.5% !important; */
                 height: 100vh !important;
                 background-color: rgba(0, 0, 0, 0.7) !important;
                 z-index: 200 !important;
@@ -338,4 +349,11 @@ cursor: auto !important;
 }
 .kids-page, .women-page, .men-page{
   margin-top: 70px;
+}
+label{
+  color: #BABABA;
+  font-size: 1rem
+}
+.font-10{
+  font-size: 10px
 }

@@ -24,7 +24,7 @@ class Home extends React.Component {
             <div className="img-put" >
               <img src={LOGOImg} style={{ width: "100%", height: "100%" }} />
             </div>
-            <div className="row px-5">
+            <div className="row px-5 mb-4">
               <div className="px-4 col-sm-12 mb-5">
                <div className="font-22 font-weight-bold my-3">Our Products</div> 
                <div className="text-left">Our products ranges from kids clothing to adult both male and female.
@@ -61,13 +61,12 @@ class Home extends React.Component {
              
             </div>
 
-
-            <div className=""><Footer/></div>
+<Footer className="mt-5"/>
           </div>
         </div>
       </div>
     );
   }
 }
-const condition = authUser => authUser;
+const condition = authUser => !authUser;
 export default  withAuthorization (condition) (Home);

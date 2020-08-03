@@ -51,11 +51,11 @@ class KidsProd extends Component {
             </div>
             <div className="card-content mt-1 px-1">
               <span className="mr-3">
-                <b>{item.price}&#8358;</b>
+                <b>&#8358;{item.price}</b>
               </span>
               <button
-                to="/"
-                className="btn btn-floating btn-small btn-view px-5 pl-5"
+              
+                className="btn btn-floating btn-small btn-view px-5 mt-1 pl-5"
                 onClick={() => {
                   this.handleView(item.id);
                 }}
@@ -71,13 +71,13 @@ class KidsProd extends Component {
 
     return (
       <div className="kids-page">
-        <div className="container">
+        <div className="container-fluid px-5 text-center">
         <h3 className="center">Enjoy your Shopping</h3>
           <div className="box row">{itemList}</div>
           {this.state.showView && (
             <div
-              className="card container mt-5"
-              style={{
+              className="card  mt-5 px-0 mx-0 showView"
+              /* style={{
                 position: "fixed",
                 top: "10px",
                 width: "100vw",
@@ -85,7 +85,7 @@ class KidsProd extends Component {
                 backgroundColor: "rgba(0, 0, 0, 0.7)",
                 zIndex: "200",
                 alignSelf: "center"
-              }}
+              }} */
             >
               <div className="viewBody">
                 <span

@@ -34,7 +34,8 @@ class AddMore extends Component{
         var prod =this.props.addedItems.map(item=> {
             return(
                 item.name,
-                item.quantity
+                item.quantity,
+                item.price
             )})
         
         console.log(guid());
@@ -43,8 +44,8 @@ class AddMore extends Component{
           .set({
             uid: user.uid,
               orderid: orderid,
-              orderdate: new Date(),
-           total:this.props.total
+           total:this.props.total,
+           orderdate: new Date()
           })
           .then(function(docRef) {
             console.log("Document written with ID: ", docRef.id);
@@ -57,9 +58,9 @@ class AddMore extends Component{
         db.collection("order items").doc()
         .set({
             orderid: orderid,
-            itemName: this.props.addedItems.map(item=> item.name),
             itemQuantity: this.props.addedItems.map(item=> item.quantity),
             itemCategory: this.props.addedItems.map(item=> item.category),
+            itemid: this.props.addedItems.map(item=> item.id),
             orderdate: new Date(),
             uid: user.uid,
             total:this.props.total
@@ -115,7 +116,7 @@ class AddMore extends Component{
         return(
             <div className="container">
                 <div><b>Total: {this.props.total} &#8358;</b></div>
-                <div className="checkout"><button className="waves-effect waves-light btn-primary"  onClick={() => {
+                <div className="checkout"><button className="waves-effect waves-light btn-primary" to="/login"  onClick={() => {
                   this.handleClick()
                 }}> Checkout</button></div>
                 {/* <div className="collection">

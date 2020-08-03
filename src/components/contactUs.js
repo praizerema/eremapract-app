@@ -1,46 +1,35 @@
 import React from "react";
 import "./styles.css";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faArrowRight, faMinus } from "@fortawesome/free-solid-svg-icons";
-
+import Footer from "./footer";
 class ContactUs extends React.Component {
     
     render() {
     return (
-      <div className="container">
+      <div className="p-5">
         <div class="loginPage p-4">
             <h2 class="loginHead text-muted">Contact Us</h2>
             <form action="" method="POST">
             <div class="form-group">
                     <label for='username'>Name </label>
-                <input class="form-control" name='fname' id='fname' type="text" placeholder="Name" />
+                <input className="form-control" name='fname' id='fname' type="text" placeholder="" />
                 </div>
                 <div class="form-group">
                     <label for='username'>Email</label>
-                <input class="form-control" name='email' id='email' type="text" placeholder="Email" />
+                <input className="form-control" name='email' id='email' type="text" placeholder="" />
                 </div>
-                
-                {/* <div class="errwrap">
-                    <span id="errorUser" class="error hide">Enter Username</span>
-                </div> */}
                 <div class="form-group"> 
                     <label for='password'>Hi, Whats your reason for contacting us?</label>
-                <textarea class="form-control" name='writetext' id='writetext' type="text" placeholder="Write in here..." />
+                <textarea className="form-control" name='writetext' id='writetext' type="text" placeholder="" />
             </div>
                
-                {/* <div class="errwrap">
-                    <span id="errorPass" class="error hide">Enter Password.</span>
-                </div> */}
                 <div class="text-center"> 
                     <button className="btn btn-login font-weight-bold mb-3" type="button" name="login">Submit</button>
                 </div>
-          <div>   <a href="./home">Click here</a> to go back to the Home Page</div>
-                {/* <div class="errwrap">
-                    <span id='error' class='error hide'>Invalid login</span>
-                </div> */}
+          <div className="font-10 acolor">   <a href="/" className="acolor">Click here to go back to the Home Page</a></div>
+                
             </form>
         </div>
-        <div className="copyr"> copyright @Erema 2019 </div>
+       <Footer />
     </div>
     );
   }

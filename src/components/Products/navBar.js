@@ -29,7 +29,7 @@ const NavigationAuth = () => (
         <Navbar.Collapse id="basic-navbar-nav " className="">
           <Nav className="mr-auto text-color-white ">
             <Nav.Link>
-              <Link>About Us</Link>
+              <Link href="https://fb.com">About Us</Link>
             </Nav.Link>
             <Nav.Link>
               <Link to={ROUTES.CONTACTUS}>Contact Us</Link>
@@ -69,7 +69,7 @@ const NavigationAuth = () => (
         <Navbar.Collapse id="basic-navbar-nav " className="">
           <Nav className="mr-auto text-color-white ">
             <Nav.Link>
-              <Link>About Us</Link>
+              <Link href="https://fb.com">About Us</Link>
             </Nav.Link>
             <Nav.Link>
               <Link to={ROUTES.SIGNIN}>Login</Link>

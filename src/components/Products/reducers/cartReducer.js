@@ -20,67 +20,6 @@ const initState = {
   //   viewValue: {}
 };
 
-// export const getMenProduct = data => {
-
-// };
-// export const getProducts = db => {
-//   return new Promise((resolve, reject) => {
-//     db.collection("products")
-//       .get()
-//       .then(querySnapshot => {
-//         let products = [];
-//         querySnapshot.forEach(doc => {
-//           let prod = {
-//             id: doc.id,
-//             name: doc.data().name,
-//             price: doc.data().price,
-//             cat: doc.data().category
-//             // stock: doc.data().stock
-//           };
-//           products.push(prod);
-//           // console.log(products)
-//           if (prod.category == "women") {
-//             initState.kids.push(prod);
-//             console.log(prod);
-//           }
-//         });
-
-//         resolve(products);
-//       })
-
-//       .catch(error => reject(error));
-//   });
-// };
-
-// export const createProducts = (db, products) => {
-//   //Create promises array
-//   let listPromises = products.map((prod, index) => {
-//     return createProduct(db, prod);
-//   });
-
-//   return Promise.all(listPromises);
-// };
-
-/* Create product */
-// export const createProduct = (db, item) => {
-//   return db
-//     .collection("products")
-//     .doc()
-//     .set({
-//       id: item.id,
-//       name: item.title,
-//       description: item.desc,
-//       price: item.price,
-//       image: item.img,
-//       Quantity: item.qty,
-//       category: item.catId
-//     });
-// };
-// createProducts(db, ProductsAll)
-//   .then(() => this.setState({ product: ProductsAll }))
-//   .catch(error => console.error(error));
-
-
 
 const cartReducer = (state = initState, action) => {
   //INSIDE HOME COMPONENT
@@ -122,6 +61,7 @@ const cartReducer = (state = initState, action) => {
         : data.type === "men"
         ? state.men_product.find(item => item.id === data.id)
         : {};
+      console.log(addedItem.price)
        
     return {
       ...state,
@@ -129,8 +69,9 @@ const cartReducer = (state = initState, action) => {
 
       //   showView: true
     };
-   
+
   }
+  
   if (action.type === SHOW_VIEW) {
     return {
       ...state,
